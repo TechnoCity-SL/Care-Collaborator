@@ -440,6 +440,255 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
+  collectionName: 'about_pages';
+  info: {
+    description: 'Content for the About / Our Story page';
+    displayName: 'About Page';
+    pluralName: 'about-pages';
+    singularName: 'about-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comparison_with: Schema.Attribute.Component<'shared.badge', true>;
+    comparison_without: Schema.Attribute.Component<'shared.badge', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
+    diff_features: Schema.Attribute.Component<'shared.feature-item', true>;
+    diff_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    diff_label: Schema.Attribute.String;
+    diff_subtext: Schema.Attribute.Text;
+    hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-page.about-page'
+    > &
+      Schema.Attribute.Private;
+    mission_body: Schema.Attribute.Text;
+    mission_label: Schema.Attribute.String;
+    mission_quote: Schema.Attribute.Text & Schema.Attribute.Required;
+    mission_values: Schema.Attribute.Component<'shared.feature-item', true>;
+    origin_body: Schema.Attribute.RichText;
+    origin_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    origin_label: Schema.Attribute.String;
+    problem_heading: Schema.Attribute.String;
+    problem_items: Schema.Attribute.Component<'shared.badge', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    stats_banner: Schema.Attribute.Component<'shared.stats-banner', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'articles';
+  info: {
+    description: 'Blog/Insights articles';
+    displayName: 'Article';
+    pluralName: 'articles';
+    singularName: 'article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    category: Schema.Attribute.Enumeration<
+      [
+        'technology',
+        'onboarding',
+        'fuel_and_costs',
+        'e_signature',
+        'digital_transformation',
+        'operations',
+        'digital',
+      ]
+    > &
+      Schema.Attribute.Required;
+    cover_image: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    excerpt: Schema.Attribute.Text;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article.article'
+    > &
+      Schema.Attribute.Private;
+    popular: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    publishedAt: Schema.Attribute.DateTime;
+    read_time: Schema.Attribute.Integer;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
+  collectionName: 'globals';
+  info: {
+    description: 'Site-wide settings: navigation and footer';
+    displayName: 'Global';
+    pluralName: 'globals';
+    singularName: 'global';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    footer_address: Schema.Attribute.String;
+    footer_columns: Schema.Attribute.Component<'shared.footer-column', true>;
+    footer_email: Schema.Attribute.Email;
+    footer_phone: Schema.Attribute.String;
+    footer_tagline: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::global.global'
+    > &
+      Schema.Attribute.Private;
+    nav_cta: Schema.Attribute.Component<'shared.cta-button', false>;
+    nav_links: Schema.Attribute.Component<'shared.link', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
+  collectionName: 'home_pages';
+  info: {
+    description: 'Content for the main landing page';
+    displayName: 'Home Page';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
+    features: Schema.Attribute.Component<'shared.feature-item', true>;
+    features_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    features_label: Schema.Attribute.String;
+    features_subtext: Schema.Attribute.Text;
+    hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    > &
+      Schema.Attribute.Private;
+    partner_logos: Schema.Attribute.Media<'images', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    stats_banner: Schema.Attribute.Component<'shared.stats-banner', false>;
+    steps: Schema.Attribute.Component<'shared.step-item', true>;
+    steps_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    steps_label: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    video_section_label: Schema.Attribute.String;
+    video_subtext: Schema.Attribute.Text;
+    video_url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiInsightsPageInsightsPage extends Struct.SingleTypeSchema {
+  collectionName: 'insights_pages';
+  info: {
+    description: 'Content for the blog listing page';
+    displayName: 'Insights Page';
+    pluralName: 'insights-pages';
+    singularName: 'insights-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
+    hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::insights-page.insights-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    sidebar_cta_body: Schema.Attribute.Text;
+    sidebar_cta_heading: Schema.Attribute.String;
+    sidebar_cta_primary: Schema.Attribute.Component<'shared.cta-button', false>;
+    sidebar_cta_secondary: Schema.Attribute.Component<
+      'shared.cta-button',
+      false
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRoiCalculatorPageRoiCalculatorPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'roi_calculator_pages';
+  info: {
+    description: 'Content for the ROI calculator page hero and section headings';
+    displayName: 'ROI Calculator Page';
+    pluralName: 'roi-calculator-pages';
+    singularName: 'roi-calculator-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    calculator_heading: Schema.Attribute.String;
+    calculator_label: Schema.Attribute.String;
+    calculator_subtext: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
+    hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::roi-calculator-page.roi-calculator-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -951,6 +1200,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::article.article': ApiArticleArticle;
+      'api::global.global': ApiGlobalGlobal;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::insights-page.insights-page': ApiInsightsPageInsightsPage;
+      'api::roi-calculator-page.roi-calculator-page': ApiRoiCalculatorPageRoiCalculatorPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

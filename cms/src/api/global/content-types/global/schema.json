@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Global",
+    "description": "Site-wide settings: navigation and footer"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nav_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "nav_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-button"
+    },
+    "footer_tagline": {
+      "type": "text"
+    },
+    "footer_columns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.footer-column"
+    },
+    "footer_email": {
+      "type": "email"
+    },
+    "footer_phone": {
+      "type": "string"
+    },
+    "footer_address": {
+      "type": "string"
+    }
+  }
+}

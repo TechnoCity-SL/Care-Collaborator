@@ -1,11 +1,4 @@
-export interface SeoDTO {
-  title: string;
-  description: string;
-  og_image?: {
-    url: string;
-    alternativeText?: string;
-  };
-}
+// ─── Strapi media ────────────────────────────────────────────────────────────
 
 export interface CloudinaryMediaDTO {
   url: string;
@@ -15,18 +8,194 @@ export interface CloudinaryMediaDTO {
   formats?: Record<string, { url: string; width: number; height: number }>;
 }
 
-export interface TeamMemberDTO {
-  id: number;
-  name: string;
-  role: string;
-  bio?: string;
-  photo?: CloudinaryMediaDTO;
+// ─── Shared components (mirror cms/src/components/shared/) ───────────────────
+
+export interface SeoDTO {
+  title: string;
+  description?: string;
+  og_image?: CloudinaryMediaDTO;
+  no_index?: boolean;
+  canonicalURL?: string;
 }
 
-export interface ValueDTO {
+export type CtaButtonVariant = 'primary' | 'secondary';
+
+export interface CtaButtonDTO {
+  label: string;
+  url: string;
+  variant: CtaButtonVariant;
+}
+
+export interface FeatureItemDTO {
+  id: number;
+  icon?: CloudinaryMediaDTO;
+  title: string;
+  description?: string;
+}
+
+export interface StatItemDTO {
+  id: number;
+  value: string;
+  label: string;
+}
+
+export interface LinkDTO {
+  id: number;
+  label: string;
+  url: string;
+  is_external: boolean;
+}
+
+// ─── Global single type ───────────────────────────────────────────────────────
+
+export interface FooterColumnDTO {
   id: number;
   title: string;
-  description: string;
+  links: LinkDTO[];
+}
+
+export interface GlobalDTO {
+  nav_links: LinkDTO[];
+  nav_cta: CtaButtonDTO;
+  footer_tagline: string;
+  footer_columns: FooterColumnDTO[];
+  footer_email: string;
+  footer_phone: string;
+  footer_address: string;
+}
+
+export interface CtaBannerDTO {
+  heading: string;
+  subtext?: string;
+  primary_cta: CtaButtonDTO;
+  secondary_cta?: CtaButtonDTO;
+  bg_image?: CloudinaryMediaDTO;
+}
+
+export interface HeroBannerDTO {
+  badge?: string;
+  title: string;
+  title_highlight?: string;
+  subtitle?: string;
+  primary_cta?: CtaButtonDTO;
+  secondary_cta?: CtaButtonDTO;
+  image?: CloudinaryMediaDTO;
+  bg_image?: CloudinaryMediaDTO;
+  badges?: BadgeDTO[];
+}
+
+export interface StatsBannerDTO {
+  label?: string;
+  heading: string;
+  stats: StatItemDTO[];
+  bg_image?: CloudinaryMediaDTO;
+}
+
+// ─── Page types ───────────────────────────────────────────────────────────────
+
+export interface HomePageDTO {
+  hero_banner?: HeroBannerDTO;
+  partner_logos: CloudinaryMediaDTO[];
+  video_section_label?: string;
+  video_heading: string;
+  video_subtext?: string;
+  video_url: string;
+  features_label?: string;
+  features_heading: string;
+  features_subtext?: string;
+  features: FeatureItemDTO[];
+  stats_banner?: StatsBannerDTO;
+  steps_label?: string;
+  steps_heading: string;
+  steps: StepItemDTO[];
+  cta_banner?: CtaBannerDTO;
+  seo: SeoDTO;
+}
+
+export interface StepItemDTO {
+  id: number;
+  title: string;
+  description?: string;
+}
+
+export interface AboutPageDTO {
+  hero_banner?: HeroBannerDTO;
+  stats_banner?: StatsBannerDTO;
+  origin_label?: string;
+  origin_heading: string;
+  origin_body: string;
+  problem_heading?: string;
+  problem_items: BadgeDTO[];
+  mission_label?: string;
+  mission_quote: string;
+  mission_body?: string;
+  mission_values: FeatureItemDTO[];
+  diff_label?: string;
+  diff_heading: string;
+  diff_subtext?: string;
+  diff_features: FeatureItemDTO[];
+  comparison_without: BadgeDTO[];
+  comparison_with: BadgeDTO[];
+  cta_banner?: CtaBannerDTO;
+  seo: SeoDTO;
+}
+
+export interface BadgeDTO {
+  id: number;
+  label: string;
+}
+
+export type ArticleCategory =
+  | 'technology'
+  | 'onboarding'
+  | 'fuel_and_costs'
+  | 'e_signature'
+  | 'digital_transformation'
+  | 'operations'
+  | 'digital';
+
+export interface ArticleDTO {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  body: string;
+  cover_image?: CloudinaryMediaDTO;
+  category: ArticleCategory;
+  author?: string;
+  read_time?: number;
+  featured: boolean;
+  popular: boolean;
+  publishedAt: string;
+  seo?: SeoDTO;
+}
+
+export interface InsightsPageDTO {
+  hero_banner?: HeroBannerDTO;
+  sidebar_cta_heading?: string;
+  sidebar_cta_body?: string;
+  sidebar_cta_primary?: CtaButtonDTO;
+  sidebar_cta_secondary?: CtaButtonDTO;
+  cta_banner?: CtaBannerDTO;
+  seo: SeoDTO;
+}
+
+export interface RoiCalculatorPageDTO {
+  hero_banner?: HeroBannerDTO;
+  calculator_label?: string;
+  calculator_heading?: string;
+  calculator_subtext?: string;
+  cta_banner?: CtaBannerDTO;
+  seo: SeoDTO;
+}
+
+export interface ContactPageDTO {
+  intro_text: string;
+  email: string;
+  phone?: string;
+  address?: string;
+  seo: SeoDTO;
 }
 
 export interface ServiceDTO {
@@ -38,38 +207,4 @@ export interface ServiceDTO {
   hero_image?: CloudinaryMediaDTO;
   content?: string;
   seo?: SeoDTO;
-}
-
-export interface HomePageDTO {
-  hero_title: string;
-  hero_subtitle?: string;
-  hero_image?: CloudinaryMediaDTO;
-  seo: SeoDTO;
-}
-
-export interface AboutPageDTO {
-  intro_text: string;
-  team?: TeamMemberDTO[];
-  values?: ValueDTO[];
-  seo: SeoDTO;
-}
-
-export interface ContactPageDTO {
-  intro_text: string;
-  email: string;
-  phone?: string;
-  address?: string;
-  map_embed?: string;
-  seo: SeoDTO;
-}
-
-export interface NavigationLinkDTO {
-  id: number;
-  label: string;
-  url: string;
-  is_external: boolean;
-}
-
-export interface NavigationDTO {
-  links: NavigationLinkDTO[];
 }

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_badges",
+  "info": {
+    "displayName": "Badge",
+    "description": "A text label used for pills, checklist items and comparison rows",
+    "icon": "tag"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

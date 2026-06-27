@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_cta_banners",
+  "info": {
+    "displayName": "CTA Banner",
+    "icon": "megaphone",
+    "description": "Call-to-action banner used at the bottom of pages"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subtext": {
+      "type": "string"
+    },
+    "primary_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-button"
+    },
+    "secondary_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-button"
+    },
+    "bg_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

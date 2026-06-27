@@ -1,0 +1,94 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_pages",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "About Page",
+    "description": "Content for the About / Our Story page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero_banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.hero-banner"
+    },
+    "stats_banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.stats-banner"
+    },
+    "origin_label": {
+      "type": "string"
+    },
+    "origin_heading": {
+      "type": "string",
+      "required": true
+    },
+    "origin_body": {
+      "type": "richtext"
+    },
+    "problem_heading": {
+      "type": "string"
+    },
+    "problem_items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.badge"
+    },
+    "mission_label": {
+      "type": "string"
+    },
+    "mission_quote": {
+      "type": "text",
+      "required": true
+    },
+    "mission_body": {
+      "type": "text"
+    },
+    "mission_values": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-item"
+    },
+    "diff_label": {
+      "type": "string"
+    },
+    "diff_heading": {
+      "type": "string",
+      "required": true
+    },
+    "diff_subtext": {
+      "type": "text"
+    },
+    "diff_features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-item"
+    },
+    "comparison_without": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.badge"
+    },
+    "comparison_with": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.badge"
+    },
+    "cta_banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-banner"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

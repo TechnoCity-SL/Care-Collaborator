@@ -1,34 +1,76 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { generateNextSeo } from 'next-seo/pages';
-import { PageLayout } from '@/components/templates/PageLayout';
+import { HeroSection } from '@/components/organisms/HeroSection';
+import { PartnerLogosSection } from '@/components/organisms/PartnerLogosSection';
+import { VideoSection } from '@/components/organisms/VideoSection';
+import { FeaturesSection } from '@/components/organisms/FeaturesSection';
+import { StatsSection } from '@/components/organisms/StatsSection';
+import { StepsSection } from '@/components/organisms/StepsSection';
+import { CtaBanner } from '@/components/organisms/CtaBanner';
+import { fetchHomePage } from '@/repositories/homePageRepository';
+import { fetchGlobal } from '@/repositories/globalRepository';
 import { logger } from '@/utils/logger';
-import type { HomePageDTO } from '@/types/pages';
+import type { HomePageDTO, GlobalDTO } from '@/types/pages';
 
 interface HomePageProps {
   pageData: HomePageDTO;
+  globalData: GlobalDTO;
 }
 
 const HomePage: NextPage<HomePageProps> = ({ pageData }) => {
   return (
     <>
-      <Head>{generateNextSeo({ title: pageData.seo.title, description: pageData.seo.description })}</Head>
-      <PageLayout>
-        <section aria-label="Hero">
-          <h1>{pageData.hero_title}</h1>
-          {pageData.hero_subtitle && <p>{pageData.hero_subtitle}</p>}
-        </section>
-      </PageLayout>
+      <Head>
+        {generateNextSeo({
+          title: pageData.seo.title,
+          description: pageData.seo.description,
+          noindex: pageData.seo.no_index,
+          canonical: pageData.seo.canonicalURL,
+        })}
+      </Head>
+
+      {pageData.hero_banner && <HeroSection data={pageData.hero_banner} />}
+
+      <PartnerLogosSection />
+
+      {pageData.video_url && (
+        <VideoSection
+          label={pageData.video_section_label}
+          heading={pageData.video_heading}
+          subtext={pageData.video_subtext}
+          videoUrl={pageData.video_url}
+        />
+      )}
+
+      <FeaturesSection
+        label={pageData.features_label}
+        heading={pageData.features_heading}
+        subtext={pageData.features_subtext}
+        features={pageData.features}
+      />
+
+      {pageData.stats_banner && <StatsSection data={pageData.stats_banner} />}
+
+      <StepsSection
+        label={pageData.steps_label}
+        heading={pageData.steps_heading}
+        steps={pageData.steps}
+      />
+
+      {pageData.cta_banner && <CtaBanner data={pageData.cta_banner} />}
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   try {
-    const { strapiGet } = await import('@/lib/strapi');
-    const response = await strapiGet<{ data: HomePageDTO }>('/home-page?populate=*');
+    const [pageData, globalData] = await Promise.all([
+      fetchHomePage(),
+      fetchGlobal(),
+    ]);
     return {
-      props: { pageData: response.data },
+      props: { pageData, globalData },
       revalidate: 86400,
     };
   } catch (error) {

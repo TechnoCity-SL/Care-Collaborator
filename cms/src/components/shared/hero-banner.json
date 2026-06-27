@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_shared_hero_banners",
+  "info": {
+    "displayName": "Hero Banner",
+    "icon": "layout",
+    "description": "Page hero section with title, optional CTAs, images, and badge chips"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "title_highlight": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "primary_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-button"
+    },
+    "secondary_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-button"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "bg_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "badges": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.badge"
+    }
+  }
+}

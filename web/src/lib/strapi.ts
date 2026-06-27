@@ -1,17 +1,18 @@
-const STRAPI_API_URL = process.env.STRAPI_API_URL;
-const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
-
-if (!STRAPI_API_URL || !STRAPI_API_TOKEN) {
-  throw new Error('Missing required Strapi environment variables.');
-}
-
 async function strapiGet<T>(endpoint: string): Promise<T> {
-  const response = await fetch(`${STRAPI_API_URL}/api${endpoint}`, {
+  const apiUrl = process.env.STRAPI_API_URL;
+  const apiToken = process.env.STRAPI_API_TOKEN;
+
+  if (!apiUrl || !apiToken) {
+    throw new Error(
+      'Missing Strapi env vars — set STRAPI_API_URL and STRAPI_API_TOKEN in .env.local'
+    );
+  }
+
+  const response = await fetch(`${apiUrl}/api${endpoint}`, {
     headers: {
-      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+      Authorization: `Bearer ${apiToken}`,
       'Content-Type': 'application/json',
     },
-    cache: 'no-store',
   });
 
   if (!response.ok) {

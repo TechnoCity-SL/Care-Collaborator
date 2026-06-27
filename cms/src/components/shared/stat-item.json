@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_stat_items",
+  "info": {
+    "displayName": "Stat Item",
+    "description": "A single statistic — value (e.g. '30%') and label",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

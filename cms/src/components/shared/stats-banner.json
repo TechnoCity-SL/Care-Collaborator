@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_stats_banners",
+  "info": {
+    "displayName": "Stats Banner",
+    "icon": "chartBubble",
+    "description": "Statistics section with heading, stat items, and optional background image"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat-item"
+    },
+    "bg_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

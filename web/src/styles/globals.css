@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ─── Brand colours (from Figma) ─────────────────────────────────────────── */
+  --color-blue:           #0074ff;
+  --color-blue-label:     #4173c5;
+  --color-blue-dark:      #0043a7;
+  --color-step-num:       #1165cc;
+
+  /* Surfaces */
+  --color-surface-card:   #fbfdff;
+  --color-surface-video:  #f0f5ff;
+  --color-surface-steps:  #f6f9ff;
+
+  /* Text */
+  --color-text-dark:      #3b3b3b;
+  --color-text-card:      #13161a;
+  --color-text-body:      #686969;
+  --color-text-nav:       #212121;
+
+  /* Footer */
+  --color-footer-bg:      #02142a;
+  --color-footer-text:    #899eb1;
+  --color-footer-muted:   #587188;
+  --color-footer-header:  #949494;
+
+  /* Legacy kept for existing components */
+  --color-navy:           #0b1d35;
+  --color-navy-light:     #1a3352;
+  --color-green:          #16b367;
+  --color-green-dark:     #12985a;
+  --color-surface-alt:    #f5f7fa;
+  --color-border:         #e2e8f0;
+  --color-muted:          #6b7280;
+
+  /* Article category badge colours */
+  --color-cat-tech:       #2563eb;
+  --color-cat-onboard:    #0891b2;
+  --color-cat-fuel:       #16a34a;
+  --color-cat-esig:       #7c3aed;
+  --color-cat-digital:    #9333ea;
+  --color-cat-ops:        #ea580c;
+  --color-cat-transform:  #0284c7;
+
+  /* ─── Font families ─────────────────────────────────────────────────────── */
+  --font-heading:   var(--font-instrument), 'Instrument Sans', ui-sans-serif, sans-serif;
+  --font-body:      var(--font-poppins), 'Poppins', ui-sans-serif, sans-serif;
+  --font-sans:      var(--font-inter), 'Inter', ui-sans-serif, sans-serif;
+  --font-step-num:  var(--font-skranji), 'Skranji', cursive;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Gradient utilities ─────────────────────────────────────────────────── */
+@utility bg-hero-gradient {
+  /* Matches Figma node 33:80 exactly — starts solid at 29.278%, fades to white at 113.94% */
+  background-image: linear-gradient(
+    161.5deg,
+    rgb(96, 146, 255) 29.278%,
+    rgb(255, 255, 255) 113.94%
+  );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility bg-stats-gradient {
+  background-image: linear-gradient(
+    14.16deg,
+    rgb(0, 67, 167) 21.1%,
+    rgb(192, 210, 255) 139.87%
+  );
 }
 
+@utility bg-cta-card-gradient {
+  background-image: linear-gradient(
+    165.73deg,
+    rgb(96, 146, 255) 7.3%,
+    rgb(255, 255, 255) 114%
+  );
+}
+
+@utility bg-btn-blue {
+  background-image: linear-gradient(
+    145.5deg,
+    rgb(0, 116, 255) 55.2%,
+    rgb(116, 188, 255) 111.6%
+  );
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #3b3b3b;
+  background: #ffffff;
+}
+
+/* Focus ring — WCAG 2.1 AA: never remove without a visible replacement */
+:focus-visible {
+  outline: 2px solid #0074ff;
+  outline-offset: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
 }

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "Seo",
+    "description": "SEO metadata for any page",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "og_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "no_index": {
+      "type": "boolean",
+      "default": false
+    },
+    "canonicalURL": {
+      "type": "string"
+    }
+  }
+}

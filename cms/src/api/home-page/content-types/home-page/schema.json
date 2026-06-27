@@ -1,0 +1,85 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": "Content for the main landing page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero_banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.hero-banner"
+    },
+    "partner_logos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "video_section_label": {
+      "type": "string"
+    },
+    "video_heading": {
+      "type": "string",
+      "required": true
+    },
+    "video_subtext": {
+      "type": "text"
+    },
+    "video_url": {
+      "type": "string",
+      "required": true
+    },
+    "features_label": {
+      "type": "string"
+    },
+    "features_heading": {
+      "type": "string",
+      "required": true
+    },
+    "features_subtext": {
+      "type": "text"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-item"
+    },
+    "stats_banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.stats-banner"
+    },
+    "steps_label": {
+      "type": "string"
+    },
+    "steps_heading": {
+      "type": "string",
+      "required": true
+    },
+    "steps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.step-item"
+    },
+    "cta_banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta-banner"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
