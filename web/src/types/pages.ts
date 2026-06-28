@@ -26,9 +26,17 @@ export interface CtaButtonDTO {
   variant: CtaButtonVariant;
 }
 
+export type FeatureIconKey =
+  | 'data_sovereignty'
+  | 'e_signature'
+  | 'russell_kennedy'
+  | 'budget_scenarios'
+  | 'integrations'
+  | 'risks_alerts';
+
 export interface FeatureItemDTO {
   id: number;
-  icon?: CloudinaryMediaDTO;
+  icon_key?: FeatureIconKey;
   title: string;
   description?: string;
 }

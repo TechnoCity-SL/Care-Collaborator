@@ -21,11 +21,12 @@ export async function fetchAboutPage(): Promise<AboutPageDTO> {
       '&populate[stats_banner][populate][bg_image][fields][2]=width' +
       '&populate[stats_banner][populate][bg_image][fields][3]=height' +
       '&populate[problem_items]=*' +
-      // feature-item has icon (media) — exclude to avoid Strapi v5 populate bug
       '&populate[mission_values][fields][0]=title' +
       '&populate[mission_values][fields][1]=description' +
+      '&populate[mission_values][fields][2]=icon_key' +
       '&populate[diff_features][fields][0]=title' +
       '&populate[diff_features][fields][1]=description' +
+      '&populate[diff_features][fields][2]=icon_key' +
       '&populate[comparison_without]=*' +
       '&populate[comparison_with]=*' +
       '&populate[cta_banner][populate][primary_cta]=*' +

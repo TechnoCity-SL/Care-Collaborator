@@ -53,7 +53,16 @@ export interface SharedFeatureItem extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    icon: Schema.Attribute.Media<'images'>;
+    icon_key: Schema.Attribute.Enumeration<
+      [
+        'data_sovereignty',
+        'e_signature',
+        'russell_kennedy',
+        'budget_scenarios',
+        'integrations',
+        'risks_alerts',
+      ]
+    >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }

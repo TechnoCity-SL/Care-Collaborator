@@ -28,10 +28,9 @@ export async function fetchHomePage(): Promise<HomePageDTO> {
       '&populate[stats_banner][populate][bg_image][fields][1]=alternativeText' +
       '&populate[stats_banner][populate][bg_image][fields][2]=width' +
       '&populate[stats_banner][populate][bg_image][fields][3]=height' +
-      '&populate[features][populate][icon][fields][0]=url' +
-      '&populate[features][populate][icon][fields][1]=alternativeText' +
-      '&populate[features][populate][icon][fields][2]=width' +
-      '&populate[features][populate][icon][fields][3]=height' +
+      '&populate[features][fields][0]=title' +
+      '&populate[features][fields][1]=description' +
+      '&populate[features][fields][2]=icon_key' +
       '&populate[steps]=*' +
       '&populate[cta_banner][populate][primary_cta]=*' +
       '&populate[cta_banner][populate][secondary_cta]=*' +

@@ -7,11 +7,17 @@
   },
   "options": {},
   "attributes": {
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
+    "icon_key": {
+      "type": "enumeration",
+      "enum": [
+        "data_sovereignty",
+        "e_signature",
+        "russell_kennedy",
+        "budget_scenarios",
+        "integrations",
+        "risks_alerts"
+      ],
+      "required": false
     },
     "title": {
       "type": "string",
