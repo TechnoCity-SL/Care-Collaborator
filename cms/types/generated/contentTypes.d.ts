@@ -599,7 +599,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       'api::home-page.home-page'
     > &
       Schema.Attribute.Private;
-    partner_logos: Schema.Attribute.Media<'images', true>;
+    partner_logos_section: Schema.Attribute.Component<
+      'shared.partner-logos-section',
+      false
+    >;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     stats_banner: Schema.Attribute.Component<'shared.stats-banner', false>;

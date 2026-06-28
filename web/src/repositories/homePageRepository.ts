@@ -4,7 +4,11 @@ import type { HomePageDTO } from '@/types/pages';
 export async function fetchHomePage(): Promise<HomePageDTO> {
   const response = await strapiGet<{ data: HomePageDTO }>(
     '/home-page' +
-      '?populate[hero_banner][populate][primary_cta]=*' +
+      '?populate[partner_logos_section][populate][logos][fields][0]=url' +
+      '&populate[partner_logos_section][populate][logos][fields][1]=alternativeText' +
+      '&populate[partner_logos_section][populate][logos][fields][2]=width' +
+      '&populate[partner_logos_section][populate][logos][fields][3]=height' +
+      '&populate[hero_banner][populate][primary_cta]=*' +
       '&populate[hero_banner][populate][secondary_cta]=*' +
       '&populate[hero_banner][populate][image][fields][0]=url' +
       '&populate[hero_banner][populate][image][fields][1]=alternativeText' +

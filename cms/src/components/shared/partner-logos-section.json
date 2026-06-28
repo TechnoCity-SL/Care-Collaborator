@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_shared_partner_logos_sections",
+  "info": {
+    "displayName": "Partner Logos Section",
+    "icon": "apps",
+    "description": "Infinite-scroll partner logo marquee with CMS-controlled behaviour"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "logos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "speed": {
+      "type": "enumeration",
+      "enum": [
+        "slow",
+        "normal",
+        "fast"
+      ],
+      "default": "normal"
+    },
+    "direction": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left"
+    },
+    "pause_on_hover": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

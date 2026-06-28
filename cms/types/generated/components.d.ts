@@ -105,6 +105,24 @@ export interface SharedLink extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedPartnerLogosSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_partner_logos_sections';
+  info: {
+    description: 'Infinite-scroll partner logo marquee with CMS-controlled behaviour';
+    displayName: 'Partner Logos Section';
+    icon: 'apps';
+  };
+  attributes: {
+    direction: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'left'>;
+    heading: Schema.Attribute.String;
+    logos: Schema.Attribute.Media<'images', true>;
+    pause_on_hover: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    speed: Schema.Attribute.Enumeration<['slow', 'normal', 'fast']> &
+      Schema.Attribute.DefaultTo<'normal'>;
+  };
+}
+
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: 'components_shared_seos';
   info: {
@@ -172,6 +190,7 @@ declare module '@strapi/strapi' {
       'shared.footer-column': SharedFooterColumn;
       'shared.hero-banner': SharedHeroBanner;
       'shared.link': SharedLink;
+      'shared.partner-logos-section': SharedPartnerLogosSection;
       'shared.seo': SharedSeo;
       'shared.stat-item': SharedStatItem;
       'shared.stats-banner': SharedStatsBanner;

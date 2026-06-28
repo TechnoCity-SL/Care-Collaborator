@@ -32,7 +32,7 @@ const HomePage: NextPage<HomePageProps> = ({ pageData }) => {
 
       {pageData.hero_banner && <HeroSection data={pageData.hero_banner} />}
 
-      <PartnerLogosSection />
+      <PartnerLogosSection data={pageData.partner_logos_section} />
 
       {pageData.video_url && (
         <VideoSection

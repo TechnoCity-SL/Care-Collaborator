@@ -91,11 +91,24 @@ export interface StatsBannerDTO {
   bg_image?: CloudinaryMediaDTO;
 }
 
+// ─── Partner logos marquee ────────────────────────────────────────────────────
+
+export type MarqueeSpeed = 'slow' | 'normal' | 'fast';
+export type MarqueeDirection = 'left' | 'right';
+
+export interface PartnerLogosSectionDTO {
+  heading?: string;
+  logos: CloudinaryMediaDTO[];
+  speed: MarqueeSpeed;
+  direction: MarqueeDirection;
+  pause_on_hover: boolean;
+}
+
 // ─── Page types ───────────────────────────────────────────────────────────────
 
 export interface HomePageDTO {
   hero_banner?: HeroBannerDTO;
-  partner_logos: CloudinaryMediaDTO[];
+  partner_logos_section?: PartnerLogosSectionDTO;
   video_section_label?: string;
   video_heading: string;
   video_subtext?: string;
