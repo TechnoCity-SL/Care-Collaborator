@@ -2,19 +2,15 @@ import type { StatItemDTO } from '@/types/pages';
 
 interface StatItemProps {
   stat: StatItemDTO;
-  theme?: 'dark' | 'light';
 }
 
-export function StatItem({ stat, theme = 'dark' }: StatItemProps) {
-  const valueClass = theme === 'dark' ? 'text-white' : 'text-text-dark';
-  const labelClass = theme === 'dark' ? 'text-white/70' : 'text-text-body';
-
+export function StatItem({ stat }: StatItemProps) {
   return (
-    <div className="flex flex-col items-center gap-2 text-center">
-      <p className={`font-heading text-5xl font-semibold lg:text-6xl ${valueClass}`}>
+    <div className="flex flex-col gap-3 px-8 first:pl-0 last:pr-0 lg:px-12">
+      <p className="font-heading text-[56px] font-semibold leading-none text-teal lg:text-[72px]">
         {stat.value}
       </p>
-      <p className={`font-body text-[16px] font-medium leading-normal ${labelClass}`}>
+      <p className="font-body text-[15px] leading-[1.5] text-white lg:text-[16px]">
         {stat.label}
       </p>
     </div>

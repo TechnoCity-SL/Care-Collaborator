@@ -31,7 +31,8 @@ export async function fetchHomePage(): Promise<HomePageDTO> {
       '&populate[features][fields][0]=title' +
       '&populate[features][fields][1]=description' +
       '&populate[features][fields][2]=icon_key' +
-      '&populate[steps]=*' +
+      '&populate[steps][fields][0]=title' +
+      '&populate[steps][fields][1]=description' +
       '&populate[cta_banner][populate][primary_cta]=*' +
       '&populate[cta_banner][populate][secondary_cta]=*' +
       '&populate[cta_banner][populate][bg_image][fields][0]=url' +

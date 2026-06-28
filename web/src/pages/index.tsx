@@ -58,6 +58,7 @@ const HomePage: NextPage<HomePageProps> = ({ pageData }) => {
       <StepsSection
         label={pageData.steps_label}
         heading={pageData.steps_heading}
+        headingHighlight={pageData.steps_heading_highlight}
         steps={pageData.steps}
       />
 

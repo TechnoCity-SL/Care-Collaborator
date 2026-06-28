@@ -24,6 +24,9 @@
   --color-footer-muted:   #587188;
   --color-footer-header:  #949494;
 
+  /* Stats section teal */
+  --color-teal:             #3de0c0;
+
   /* Legacy kept for existing components */
   --color-navy:           #0b1d35;
   --color-navy-light:     #1a3352;

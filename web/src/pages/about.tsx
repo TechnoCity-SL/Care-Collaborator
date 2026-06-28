@@ -31,7 +31,7 @@ const AboutPage: NextPage<AboutPageProps> = ({ pageData }) => {
 
       {pageData.hero_banner && <HeroSection data={pageData.hero_banner} />}
 
-      {pageData.stats_banner && <StatsSection data={pageData.stats_banner} theme="light" />}
+      {pageData.stats_banner && <StatsSection data={pageData.stats_banner} />}
 
       {/* Origin */}
       <section className="bg-surface-alt py-20 sm:py-28" aria-labelledby="origin-heading">

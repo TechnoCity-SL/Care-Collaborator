@@ -609,6 +609,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     stats_banner: Schema.Attribute.Component<'shared.stats-banner', false>;
     steps: Schema.Attribute.Component<'shared.step-item', true>;
     steps_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    steps_heading_highlight: Schema.Attribute.String;
     steps_label: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

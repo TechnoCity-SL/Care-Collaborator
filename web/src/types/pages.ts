@@ -131,6 +131,7 @@ export interface HomePageDTO {
   stats_banner?: StatsBannerDTO;
   steps_label?: string;
   steps_heading: string;
+  steps_heading_highlight?: string;
   steps: StepItemDTO[];
   cta_banner?: CtaBannerDTO;
   seo: SeoDTO;

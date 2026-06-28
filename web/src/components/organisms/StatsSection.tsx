@@ -1,23 +1,18 @@
 import Image from 'next/image';
-import { SectionLabel } from '@/components/atoms/SectionLabel';
-import { Heading } from '@/components/atoms/Heading';
 import { StatItem } from '@/components/molecules/StatItem';
 import type { StatsBannerDTO } from '@/types/pages';
 
 interface StatsSectionProps {
   data: StatsBannerDTO;
-  theme?: 'dark' | 'light';
 }
 
-export function StatsSection({ data, theme = 'dark' }: StatsSectionProps) {
+export function StatsSection({ data }: StatsSectionProps) {
   const { label, heading, stats, bg_image } = data;
   const hasBgImage = !!bg_image?.url;
-  const isLight = theme === 'light' && !hasBgImage;
-  const defaultBg = isLight ? 'bg-surface-steps' : 'bg-stats-gradient';
 
   return (
     <section
-      className={`relative overflow-hidden py-[120px] ${hasBgImage ? '' : defaultBg}`}
+      className={`relative overflow-hidden py-[120px] ${hasBgImage ? '' : 'bg-stats-gradient'}`}
       aria-labelledby="stats-heading"
     >
       {hasBgImage && (
@@ -30,24 +25,35 @@ export function StatsSection({ data, theme = 'dark' }: StatsSectionProps) {
         />
       )}
 
-      <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-8">
+      {/* Sparkle — left edge decoration */}
+      <div
+        className="pointer-events-none absolute top-1/2 hidden -translate-y-1/2 select-none lg:block"
+        style={{ left: '32px' }}
+        aria-hidden="true"
+      >
+        <Image src="/images/features-section/sparkle.svg" alt="" width={43} height={45} />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
+        {/* Header */}
         <div className="mb-[72px] flex flex-col items-center gap-8 text-center">
           {label && (
-            <SectionLabel
-              label={label}
-              className={`mb-0 ${isLight ? '' : 'text-white/70'}`}
-            />
+            <p className="font-sans text-[18px] font-bold uppercase tracking-[1.98px] text-teal">
+              {label}
+            </p>
           )}
-          <Heading
-            as="h2"
+          <h2
             id="stats-heading"
-            text={heading}
-            className={`font-heading text-[50px] font-semibold leading-[1.1] ${isLight ? 'text-text-dark' : 'text-white'}`}
-          />
+            className="font-heading text-[clamp(36px,4vw,50px)] font-semibold leading-[1.15] text-white"
+          >
+            {heading}
+          </h2>
         </div>
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
+
+        {/* Stats row — 2-col on mobile, 4-col on desktop with dividers */}
+        <div className="grid grid-cols-2 gap-y-12 lg:flex lg:divide-x lg:divide-white/25">
           {stats.map((stat) => (
-            <StatItem key={stat.id} stat={stat} theme={isLight ? 'light' : 'dark'} />
+            <StatItem key={stat.id} stat={stat} />
           ))}
         </div>
       </div>
