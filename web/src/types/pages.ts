@@ -111,10 +111,13 @@ export interface HomePageDTO {
   partner_logos_section?: PartnerLogosSectionDTO;
   video_section_label?: string;
   video_heading: string;
+  video_heading_highlight?: string;
   video_subtext?: string;
-  video_url: string;
+  video_url?: string;
+  video_file?: CloudinaryMediaDTO;
   features_label?: string;
   features_heading: string;
+  features_heading_highlight?: string;
   features_subtext?: string;
   features: FeatureItemDTO[];
   stats_banner?: StatsBannerDTO;

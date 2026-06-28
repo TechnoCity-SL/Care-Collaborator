@@ -29,12 +29,23 @@
       "type": "string",
       "required": true
     },
+    "video_heading_highlight": {
+      "type": "string"
+    },
     "video_subtext": {
       "type": "text"
     },
     "video_url": {
-      "type": "string",
-      "required": true
+      "type": "string"
+    },
+    "video_file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos",
+        "images"
+      ]
     },
     "features_label": {
       "type": "string"
@@ -42,6 +53,9 @@
     "features_heading": {
       "type": "string",
       "required": true
+    },
+    "features_heading_highlight": {
+      "type": "string"
     },
     "features_subtext": {
       "type": "text"

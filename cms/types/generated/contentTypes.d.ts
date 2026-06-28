@@ -590,6 +590,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
     features: Schema.Attribute.Component<'shared.feature-item', true>;
     features_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    features_heading_highlight: Schema.Attribute.String;
     features_label: Schema.Attribute.String;
     features_subtext: Schema.Attribute.Text;
     hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
@@ -612,10 +613,12 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    video_file: Schema.Attribute.Media<'videos' | 'images'>;
     video_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    video_heading_highlight: Schema.Attribute.String;
     video_section_label: Schema.Attribute.String;
     video_subtext: Schema.Attribute.Text;
-    video_url: Schema.Attribute.String & Schema.Attribute.Required;
+    video_url: Schema.Attribute.String;
   };
 }
 

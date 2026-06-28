@@ -8,6 +8,10 @@ export async function fetchHomePage(): Promise<HomePageDTO> {
       '&populate[partner_logos_section][populate][logos][fields][1]=alternativeText' +
       '&populate[partner_logos_section][populate][logos][fields][2]=width' +
       '&populate[partner_logos_section][populate][logos][fields][3]=height' +
+      '&populate[video_file][fields][0]=url' +
+      '&populate[video_file][fields][1]=alternativeText' +
+      '&populate[video_file][fields][2]=width' +
+      '&populate[video_file][fields][3]=height' +
       '&populate[hero_banner][populate][primary_cta]=*' +
       '&populate[hero_banner][populate][secondary_cta]=*' +
       '&populate[hero_banner][populate][image][fields][0]=url' +
@@ -24,9 +28,10 @@ export async function fetchHomePage(): Promise<HomePageDTO> {
       '&populate[stats_banner][populate][bg_image][fields][1]=alternativeText' +
       '&populate[stats_banner][populate][bg_image][fields][2]=width' +
       '&populate[stats_banner][populate][bg_image][fields][3]=height' +
-      // features has an icon (media) sub-field — exclude it to avoid Strapi v5 populate bug
-      '&populate[features][fields][0]=title' +
-      '&populate[features][fields][1]=description' +
+      '&populate[features][populate][icon][fields][0]=url' +
+      '&populate[features][populate][icon][fields][1]=alternativeText' +
+      '&populate[features][populate][icon][fields][2]=width' +
+      '&populate[features][populate][icon][fields][3]=height' +
       '&populate[steps]=*' +
       '&populate[cta_banner][populate][primary_cta]=*' +
       '&populate[cta_banner][populate][secondary_cta]=*' +

@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import { SectionLabel } from '@/components/atoms/SectionLabel';
-import { Heading } from '@/components/atoms/Heading';
 import { FeatureCard } from '@/components/molecules/FeatureCard';
 import type { FeatureItemDTO } from '@/types/pages';
 
@@ -18,18 +18,63 @@ export function FeaturesSection({
   subtext,
   features,
 }: FeaturesSectionProps) {
+  const resolvedHighlight = (() => {
+    if (headingHighlight && heading.includes(headingHighlight)) return headingHighlight;
+    return heading;
+  })();
+
+  const renderHeading = () => {
+    const [before, after] = heading.split(resolvedHighlight);
+    return (
+      <>
+        {before}
+        <span className="relative inline-block">
+          {/* Wavy brush underline — rendered first so it sits behind the text */}
+          <span
+            className="pointer-events-none absolute inset-x-0 left-[40%] translate-x-[-50%] bottom-[-14px] select-none"
+            aria-hidden="true"
+          >
+            <Image
+              src="/images/features-section/wavy-underline.svg"
+              alt=""
+              width={304}
+              height={44}
+              className="h-auto w-[50%]"
+            />
+          </span>
+          <span className="relative">{resolvedHighlight}</span>
+        </span>
+        {after}
+      </>
+    );
+  };
+
   return (
-    <section className="bg-white py-[120px]" aria-labelledby="features-heading">
-      <div className="mx-auto max-w-[1300px] px-6 lg:px-8">
+    <section className="relative bg-white py-[120px]" aria-labelledby="features-heading">
+      {/* Sparkle — top-right decorative */}
+      <div
+        className="pointer-events-none absolute top-[300px] hidden select-none lg:block"
+        style={{ left: 'calc(50% + 660px)' }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/features-section/sparkle.svg"
+          alt=""
+          width={43}
+          height={45}
+        />
+      </div>
+
+      <div className="mx-auto max-w-[1300px] px-6 lg:px-0">
+        {/* Header */}
         <div className="mb-[72px] flex flex-col items-center gap-8 text-center">
           {label && <SectionLabel label={label} className="mb-0" />}
-          <Heading
-            as="h2"
+          <h2
             id="features-heading"
-            text={heading}
-            highlight={headingHighlight}
-            className="font-heading text-[50px] font-semibold leading-[1.1] text-text-dark"
-          />
+            className="font-heading text-[clamp(32px,4vw,50px)] font-semibold leading-[1.15] text-text-dark"
+          >
+            {renderHeading()}
+          </h2>
           {subtext && (
             <p className="max-w-[912px] text-[16px] leading-[29px] text-text-dark">
               {subtext}
@@ -37,6 +82,7 @@ export function FeaturesSection({
           )}
         </div>
 
+        {/* Cards — two rows of three, any overflow fills further rows */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <FeatureCard key={feature.id} feature={feature} />

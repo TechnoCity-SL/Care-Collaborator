@@ -10,9 +10,13 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
         api_secret: env('CLOUDINARY_SECRET'),
       },
       actionOptions: {
-        upload: { folder: 'Care-Collaborator-Web' },
-        uploadStream: { folder: 'Care-Collaborator-Web' },
+        upload: { folder: 'Care-Collaborator-Web', resource_type: 'auto' },
+        uploadStream: { folder: 'Care-Collaborator-Web', resource_type: 'auto' },
         delete: {},
+      },
+      sizeLimit: 512 * 1024 * 1024,
+      security: {
+        allowedFileTypes: ['image/*', 'video/*', 'application/pdf'],
       },
     },
   },

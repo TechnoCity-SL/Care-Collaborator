@@ -67,6 +67,21 @@
   );
 }
 
+@utility bg-video-player-gradient {
+  /* Radial gradient from Figma node 95:478 — dark blue (bottom-left) → light periwinkle (top-right) */
+  background: radial-gradient(
+    ellipse 150% 140% at 33% 82%,
+    #0043a7 0%,
+    #0c4cac 6.25%,
+    #1855b2 12.5%,
+    #3067bd 25%,
+    #487ac8 37.5%,
+    #608dd3 50%,
+    #90aee9 75%,
+    #c0d2ff 100%
+  );
+}
+
 @utility bg-cta-card-gradient {
   background-image: linear-gradient(
     165.73deg,

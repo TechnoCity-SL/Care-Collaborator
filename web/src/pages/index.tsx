@@ -34,18 +34,21 @@ const HomePage: NextPage<HomePageProps> = ({ pageData }) => {
 
       <PartnerLogosSection data={pageData.partner_logos_section} />
 
-      {pageData.video_url && (
+      {(pageData.video_url || pageData.video_file) && (
         <VideoSection
           label={pageData.video_section_label}
           heading={pageData.video_heading}
+          headingHighlight={pageData.video_heading_highlight}
           subtext={pageData.video_subtext}
           videoUrl={pageData.video_url}
+          videoFile={pageData.video_file}
         />
       )}
 
       <FeaturesSection
         label={pageData.features_label}
         heading={pageData.features_heading}
+        headingHighlight={pageData.features_heading_highlight}
         subtext={pageData.features_subtext}
         features={pageData.features}
       />
