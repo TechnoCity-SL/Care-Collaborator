@@ -70,13 +70,16 @@ export function VideoSection({
         {before}
         <span className="relative inline-block">
           {/* Wavy brush underline rendered first → sits behind the text */}
-          <span className="pointer-events-none absolute inset-x-0 bottom-[-5] left-[50%] select-none" aria-hidden="true">
+          <span
+            className="pointer-events-none absolute inset-x-0 bottom-[-10] select-none"
+            aria-hidden="true"
+          >
             <Image
               src="/images/video-section/wavy-underline.svg"
               alt=""
               width={438}
               height={44}
-              className="h-auto w-[100%]"
+              className="h-auto w-full"
             />
           </span>
           <span className="relative">{resolvedHighlight}</span>

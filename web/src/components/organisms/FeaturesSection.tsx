@@ -31,7 +31,7 @@ export function FeaturesSection({
         <span className="relative inline-block">
           {/* Wavy brush underline — rendered first so it sits behind the text */}
           <span
-            className="pointer-events-none absolute inset-x-0 left-[40%] translate-x-[-50%] bottom-[-14px] select-none"
+            className="pointer-events-none absolute inset-x-0 bottom-[-14px] select-none"
             aria-hidden="true"
           >
             <Image
@@ -39,7 +39,7 @@ export function FeaturesSection({
               alt=""
               width={304}
               height={44}
-              className="h-auto w-[50%]"
+              className="h-auto w-full"
             />
           </span>
           <span className="relative">{resolvedHighlight}</span>
