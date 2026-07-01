@@ -90,7 +90,7 @@ export function VideoSection({
   };
 
   return (
-    <section className="relative bg-surface-video py-[120px]" aria-labelledby="video-heading">
+    <section className="relative bg-surface-video py-16 md:py-20 lg:py-[120px]" aria-labelledby="video-heading">
       {/* Sparkle — top-right decorative, Figma node 103:87 */}
       <div
         className="pointer-events-none absolute top-[127px] hidden select-none lg:block"
@@ -108,7 +108,7 @@ export function VideoSection({
       <div className="mx-auto max-w-[1300px] px-6 lg:px-0">
         {/* Text block */}
         <div className="flex flex-col items-center gap-4 text-center">
-          <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-6 lg:gap-8">
             {label && <SectionLabel label={label} />}
             <h2
               id="video-heading"
@@ -151,10 +151,10 @@ export function VideoSection({
                 onClick={canPlay ? () => setIsPlaying(true) : undefined}
                 disabled={!canPlay}
               >
-                <div className="flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white shadow-lg transition-transform duration-200 hover:scale-110">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg transition-transform duration-200 hover:scale-110 md:h-20 md:w-20 lg:h-[100px] lg:w-[100px]">
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-10 w-10 translate-x-0.5 text-blue-dark"
+                    className="h-7 w-7 translate-x-0.5 text-blue-dark md:h-8 md:w-8 lg:h-10 lg:w-10"
                     fill="currentColor"
                     aria-hidden="true"
                   >

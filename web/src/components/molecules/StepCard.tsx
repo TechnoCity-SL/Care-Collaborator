@@ -10,13 +10,13 @@ export function StepCard({ step, index, isLast = false }: StepCardProps) {
   const stepNumber = String(index + 1).padStart(2, '0');
 
   return (
-    <div className="flex flex-col gap-6 bg-surface-steps pr-8 last:pr-0">
+    <div className="flex flex-col gap-6 bg-surface-steps lg:pr-8 lg:last:pr-0">
       <div className="flex items-center gap-4">
         <span className="font-step-num text-[44px] leading-none text-step-num shrink-0">
           {stepNumber}
         </span>
         {!isLast && (
-          <div className="flex flex-1 items-center gap-1" aria-hidden="true">
+          <div className="hidden flex-1 items-center gap-1 lg:flex" aria-hidden="true">
             <div
               className="h-[2px] flex-1"
               style={{

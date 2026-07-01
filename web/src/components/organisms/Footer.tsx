@@ -15,29 +15,38 @@ export function Footer({ globalData }: FooterProps) {
   } = globalData;
 
   return (
-    <footer className="bg-footer-bg pt-24 pb-8">
-      <div className="mx-auto max-w-[1780px] px-[70px]">
-        <div className="flex items-start justify-between gap-12">
+    <footer className="bg-footer-bg pt-16 pb-8 lg:pt-24">
+      <div className="mx-auto max-w-[1780px] px-6 lg:px-[70px]">
+
+        {/* Main grid: brand col on top on mobile, side-by-side on lg */}
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
+
           {/* Brand column */}
-          <div className="flex max-w-[520px] flex-col gap-6">
+          <div className="flex max-w-full flex-col gap-6 lg:max-w-[520px]">
             <span className="font-sans text-[22px] font-bold tracking-tight text-white">
               Care{' '}
               <span className="bg-btn-blue bg-clip-text text-transparent">Collaborator</span>
             </span>
             {footer_tagline && (
-              <p className="font-body text-[18px] leading-normal text-footer-text">
+              <p className="font-body text-[16px] leading-normal text-footer-text lg:text-[18px]">
                 {footer_tagline}
               </p>
             )}
-            <div className="flex flex-col gap-1 font-body text-[16px] text-footer-muted">
+            <div className="flex flex-col gap-1 font-body text-[14px] text-footer-muted lg:text-[16px]">
               {footer_email && (
-                <a href={`mailto:${footer_email}`} className="transition-colors hover:text-footer-text">
+                <a
+                  href={`mailto:${footer_email}`}
+                  className="transition-colors hover:text-footer-text"
+                >
                   {footer_email}
                 </a>
               )}
               {footer_phone && (
                 <span>
-                  <a href={`tel:${footer_phone.replace(/\s/g, '')}`} className="transition-colors hover:text-footer-text">
+                  <a
+                    href={`tel:${footer_phone.replace(/\s/g, '')}`}
+                    className="transition-colors hover:text-footer-text"
+                  >
                     {footer_phone}
                   </a>
                   {footer_address && ` · ${footer_address}`}
@@ -46,21 +55,21 @@ export function Footer({ globalData }: FooterProps) {
             </div>
           </div>
 
-          {/* Link columns */}
-          <div className="flex flex-1 items-start justify-between gap-8">
+          {/* Link columns — 2-col grid on mobile/tablet, flex row on lg */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:gap-x-12 lg:flex lg:flex-1 lg:justify-between">
             {footer_columns.map((col) => (
-              <div key={col.id} className="flex flex-col gap-6">
-                <p className="font-body text-[18px] font-normal uppercase tracking-wide text-footer-header">
+              <div key={col.id} className="flex flex-col gap-5">
+                <p className="font-body text-[14px] font-semibold uppercase tracking-wide text-footer-header lg:text-[18px] lg:font-normal">
                   {col.title}
                 </p>
-                <ul className="flex flex-col gap-4">
+                <ul className="flex flex-col gap-3 lg:gap-4">
                   {col.links.map((link) => (
                     <li key={link.id}>
                       <Link
                         href={link.url}
                         target={link.is_external ? '_blank' : undefined}
                         rel={link.is_external ? 'noopener noreferrer' : undefined}
-                        className="font-body text-[16px] text-footer-text transition-colors hover:text-white"
+                        className="font-body text-[14px] text-footer-text transition-colors hover:text-white lg:text-[16px]"
                       >
                         {link.label}
                       </Link>
@@ -73,10 +82,10 @@ export function Footer({ globalData }: FooterProps) {
         </div>
 
         {/* Divider + bottom bar */}
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <div className="flex items-center justify-between font-body text-[16px] text-footer-muted">
+        <div className="mt-10 border-t border-white/10 pt-8 lg:mt-12">
+          <div className="flex flex-col gap-4 font-body text-[13px] text-footer-muted sm:flex-row sm:items-center sm:justify-between lg:text-[16px]">
             <p>© Care Collaborator {new Date().getFullYear()}. All rights reserved.</p>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
               <span>🇦🇺 Australian-owned · Data compliant</span>
               <Link href="/privacy" className="transition-colors hover:text-footer-text">
                 Privacy Policy

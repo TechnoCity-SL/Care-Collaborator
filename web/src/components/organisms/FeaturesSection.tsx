@@ -50,7 +50,7 @@ export function FeaturesSection({
   };
 
   return (
-    <section className="relative bg-white py-[120px]" aria-labelledby="features-heading">
+    <section className="relative bg-white py-16 md:py-20 lg:py-[120px]" aria-labelledby="features-heading">
       {/* Sparkle — top-right decorative */}
       <div
         className="pointer-events-none absolute top-[300px] hidden select-none lg:block"
@@ -67,7 +67,7 @@ export function FeaturesSection({
 
       <div className="mx-auto max-w-[1300px] px-6 lg:px-0">
         {/* Header */}
-        <div className="mb-[72px] flex flex-col items-center gap-8 text-center">
+        <div className="mb-10 flex flex-col items-center gap-6 text-center lg:mb-[72px] lg:gap-8">
           {label && <SectionLabel label={label} className="mb-0" />}
           <h2
             id="features-heading"

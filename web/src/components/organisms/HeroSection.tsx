@@ -64,19 +64,19 @@ export function HeroSection({ data }: HeroSectionProps) {
         <div className={`flex gap-14 ${hasContentImage ? 'flex-col lg:flex-row lg:items-center' : 'flex-col'}`}>
 
           {/* Text column */}
-          <div className={`flex flex-col gap-[72px] ${hasContentImage ? 'lg:w-1/2' : 'max-w-[880px]'}`}>
+          <div className={`flex flex-col gap-10 lg:gap-[72px] ${hasContentImage ? 'lg:w-1/2' : 'max-w-[880px]'}`}>
 
             {/* Top group: badge → title → subtitle */}
-            <div className="flex flex-col gap-[32px] items-start">
+            <div className="flex flex-col gap-6 items-start lg:gap-[32px]">
               {badge && <Badge label={badge} theme="hero" />}
 
-              <div className="flex flex-col gap-[24px] max-w-[770px] w-full">
+              <div className="flex flex-col gap-5 max-w-[770px] w-full lg:gap-[24px]">
                 <Heading
                   as="h1"
                   id="hero-heading"
                   text={title}
                   highlight={title_highlight}
-                  className="font-heading text-[46px] font-medium leading-[56px] text-white lg:text-[60px] lg:leading-[72px]"
+                  className="font-heading text-[36px] font-medium leading-[44px] text-white sm:text-[46px] sm:leading-[56px] lg:text-[60px] lg:leading-[72px]"
                   highlightClassName="font-bold text-[#003677]"
                 />
 

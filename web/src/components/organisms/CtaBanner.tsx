@@ -34,7 +34,7 @@ export function CtaBanner({ data }: CtaBannerProps) {
   const hasBgImage = !!bg_image?.url;
 
   return (
-    <section className="bg-surface-steps px-6 pb-[80px] pt-0 lg:px-20 lg:pb-[120px]" aria-labelledby="cta-heading">
+    <section className="bg-surface-steps px-4 pb-16 pt-0 sm:px-6 lg:px-20 lg:pb-[120px]" aria-labelledby="cta-heading">
       <div
         className={`relative mx-auto overflow-hidden rounded-[32px] px-8 py-20 text-center lg:px-16 lg:py-24 ${hasBgImage ? '' : 'bg-cta-card-gradient'}`}
       >

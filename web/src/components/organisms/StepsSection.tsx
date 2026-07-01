@@ -45,7 +45,7 @@ export function StepsSection({ label, heading, headingHighlight, steps }: StepsS
   };
 
   return (
-    <section className="relative overflow-hidden bg-surface-steps py-[120px]" aria-labelledby="steps-heading">
+    <section className="relative overflow-hidden bg-surface-steps py-16 md:py-20 lg:py-[120px]" aria-labelledby="steps-heading">
       {/* Bird mascot — left edge, vertically centred on the steps row */}
       <div
         className="pointer-events-none absolute bottom-0 left-0 hidden select-none lg:block"
@@ -63,11 +63,11 @@ export function StepsSection({ label, heading, headingHighlight, steps }: StepsS
 
       <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
         {/* Header */}
-        <div className="mb-[72px] flex flex-col items-center gap-8 text-center">
+        <div className="mb-10 flex flex-col items-center gap-6 text-center lg:mb-[72px] lg:gap-8">
           {label && <SectionLabel label={label} className="mb-0" />}
           <h2
             id="steps-heading"
-            className="mx-auto max-w-[820px] font-heading text-[clamp(32px,4vw,50px)] font-semibold leading-[1.15] text-text-dark"
+            className="mx-auto max-w-[820px] font-heading text-[clamp(28px,4vw,50px)] font-semibold leading-[1.15] text-text-dark"
           >
             {renderHeading()}
           </h2>

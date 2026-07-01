@@ -12,7 +12,7 @@ export function StatsSection({ data }: StatsSectionProps) {
 
   return (
     <section
-      className={`relative overflow-hidden py-[120px] ${hasBgImage ? '' : 'bg-stats-gradient'}`}
+      className={`relative overflow-hidden py-16 md:py-20 lg:py-[120px] ${hasBgImage ? '' : 'bg-stats-gradient'}`}
       aria-labelledby="stats-heading"
     >
       {hasBgImage && (
@@ -36,7 +36,7 @@ export function StatsSection({ data }: StatsSectionProps) {
 
       <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
         {/* Header */}
-        <div className="mb-[72px] flex flex-col items-center gap-8 text-center">
+        <div className="mb-10 flex flex-col items-center gap-6 text-center lg:mb-[72px] lg:gap-8">
           {label && (
             <p className="font-sans text-[18px] font-bold uppercase tracking-[1.98px] text-teal">
               {label}
@@ -51,7 +51,7 @@ export function StatsSection({ data }: StatsSectionProps) {
         </div>
 
         {/* Stats row — 2-col on mobile, 4-col on desktop with dividers */}
-        <div className="grid grid-cols-2 gap-y-12 lg:flex lg:divide-x lg:divide-white/25">
+        <div className="grid grid-cols-2 gap-y-10 sm:gap-y-12 lg:flex lg:divide-x lg:divide-white/25">
           {stats.map((stat) => (
             <StatItem key={stat.id} stat={stat} />
           ))}
