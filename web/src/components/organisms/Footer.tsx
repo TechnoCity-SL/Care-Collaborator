@@ -15,7 +15,7 @@ export function Footer({ globalData }: FooterProps) {
   } = globalData;
 
   return (
-    <footer className="bg-footer-bg pt-16 pb-8 lg:pt-24">
+    <footer className="bg-footer-bg pb-8 pt-16 lg:pt-[72px]">
       <div className="mx-auto max-w-[1780px] px-6 lg:px-[70px]">
 
         {/* Main grid: brand col on top on mobile, side-by-side on lg */}

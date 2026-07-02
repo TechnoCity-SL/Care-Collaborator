@@ -31,7 +31,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 const base =
-  'inline-flex items-center justify-center rounded-[18px] transition-all duration-150 focus-visible:outline-none';
+  'inline-flex items-center justify-center rounded-[16px] transition-all duration-150 focus-visible:outline-none';
 
 export function Button({
   label,

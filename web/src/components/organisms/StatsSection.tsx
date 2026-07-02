@@ -34,11 +34,22 @@ export function StatsSection({ data }: StatsSectionProps) {
         <Image src="/images/features-section/sparkle.svg" alt="" width={43} height={45} />
       </div>
 
+      {/* Bird mascot — bottom-right */}
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 hidden select-none lg:block"
+        aria-hidden="true"
+      >
+        <Image src="/images/steps-section/bird.png" alt="" width={220} height={220} className="object-contain" />
+      </div>
+
       <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
         {/* Header */}
         <div className="mb-10 flex flex-col items-center gap-6 text-center lg:mb-[72px] lg:gap-8">
           {label && (
-            <p className="font-sans text-[18px] font-bold uppercase tracking-[1.98px] text-teal">
+            <p
+              className="bg-clip-text font-sans text-[18px] font-bold uppercase tracking-[1.98px] text-transparent"
+              style={{ backgroundImage: 'linear-gradient(179deg, rgb(8, 223, 162) 1%, rgb(116, 188, 255) 99%)' }}
+            >
               {label}
             </p>
           )}
