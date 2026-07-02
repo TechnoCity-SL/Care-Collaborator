@@ -29,5 +29,6 @@ async function revalidateFrontend(paths: string[]): Promise<void> {
 }
 
 export default {
-  afterPublish: () => revalidateFrontend(['/']),
+  afterCreate: () => revalidateFrontend(['/']),
+  afterUpdate: () => revalidateFrontend(['/']),
 };
