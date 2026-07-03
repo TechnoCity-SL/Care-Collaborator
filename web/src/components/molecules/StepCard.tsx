@@ -16,17 +16,21 @@ export function StepCard({ step, index, isLast = false }: StepCardProps) {
           {stepNumber}
         </span>
         {!isLast && (
-          <div className="hidden flex-1 items-center gap-1 lg:flex" aria-hidden="true">
-            <div
-              className="h-[2px] flex-1"
-              style={{
-                backgroundImage:
-                  'repeating-linear-gradient(to right, #0074ff55 0px, #0074ff55 5px, transparent 5px, transparent 12px)',
-              }}
-            />
-            {/* Arrowhead */}
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="shrink-0">
-              <path d="M1 5H9M9 5L5.5 1.5M9 5L5.5 8.5" stroke="#0074ff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <div className="hidden flex-1 items-center lg:flex" aria-hidden="true">
+            <svg
+              viewBox="0 0 112 24"
+              preserveAspectRatio="none"
+              className="h-6 w-full"
+              fill="none"
+            >
+              <path
+                d="M4 13C24 21 40 21 58 14C74 8 82 4 94 4"
+                stroke="#0074ff55"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray="1 9"
+              />
+              <path d="M92 0L108 4.5L92 9V0Z" fill="#0074ff" />
             </svg>
           </div>
         )}

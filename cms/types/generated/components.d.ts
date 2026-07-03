@@ -91,6 +91,7 @@ export interface SharedHeroBanner extends Struct.ComponentSchema {
     badge: Schema.Attribute.String;
     badges: Schema.Attribute.Component<'shared.badge', true>;
     bg_image: Schema.Attribute.Media<'images'>;
+    clouds: Schema.Attribute.Component<'shared.parallax-cloud', true>;
     image: Schema.Attribute.Media<'images'>;
     primary_cta: Schema.Attribute.Component<'shared.cta-button', false>;
     secondary_cta: Schema.Attribute.Component<'shared.cta-button', false>;
@@ -111,6 +112,26 @@ export interface SharedLink extends Struct.ComponentSchema {
     is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedParallaxCloud extends Struct.ComponentSchema {
+  collectionName: 'components_shared_parallax_clouds';
+  info: {
+    description: 'A decorative cloud image layered over a hero banner that drifts at its own speed on scroll';
+    displayName: 'Parallax Cloud';
+    icon: 'cloud';
+  };
+  attributes: {
+    bottom: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    left: Schema.Attribute.String;
+    right: Schema.Attribute.String;
+    speed: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0.3>;
+    top: Schema.Attribute.String;
+    z_index: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
   };
 }
 
@@ -199,6 +220,7 @@ declare module '@strapi/strapi' {
       'shared.footer-column': SharedFooterColumn;
       'shared.hero-banner': SharedHeroBanner;
       'shared.link': SharedLink;
+      'shared.parallax-cloud': SharedParallaxCloud;
       'shared.partner-logos-section': SharedPartnerLogosSection;
       'shared.seo': SharedSeo;
       'shared.stat-item': SharedStatItem;

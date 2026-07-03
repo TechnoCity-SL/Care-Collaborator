@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/atoms/Badge';
 import { Heading } from '@/components/atoms/Heading';
 import { Button } from '@/components/atoms/Button';
+import { ParallaxCloud } from '@/components/molecules/ParallaxCloud';
 import type { HeroBannerDTO } from '@/types/pages';
 
 interface HeroSectionProps {
@@ -19,11 +20,13 @@ export function HeroSection({ data }: HeroSectionProps) {
     image,
     bg_image,
     badges,
+    clouds,
   } = data;
 
   const hasContentImage = !!image?.url;
   const hasBgImage = !!bg_image?.url;
   const hasBadgeChips = !!badges?.length;
+  const hasClouds = !!clouds?.length;
 
   return (
     <section
@@ -59,6 +62,8 @@ export function HeroSection({ data }: HeroSectionProps) {
           </svg>
         </div>
       )}
+
+      {hasClouds && clouds.map((cloud) => <ParallaxCloud key={cloud.id} cloud={cloud} />)}
 
       <div className="relative z-10 mx-auto max-w-[1300px] px-6 py-20 lg:px-[70px] lg:py-[100px]">
         <div className={`flex gap-14 ${hasContentImage ? 'flex-col lg:flex-row lg:items-center' : 'flex-col'}`}>

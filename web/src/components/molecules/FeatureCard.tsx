@@ -18,7 +18,7 @@ export function FeatureCard({ feature }: FeatureCardProps) {
   const iconSrc = feature.icon_key ? ICON_SRC[feature.icon_key] : undefined;
 
   return (
-    <div className="flex flex-col gap-6 rounded-[16px] bg-surface-card p-6">
+    <div className="flex flex-col gap-6 rounded-[16px] bg-surface-card p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg">
       {iconSrc && (
         <div className="relative h-12 w-12 shrink-0">
           <Image src={iconSrc} alt="" fill className="object-contain" />

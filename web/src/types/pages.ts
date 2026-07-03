@@ -80,6 +80,17 @@ export interface CtaBannerDTO {
   bg_image?: CloudinaryMediaDTO;
 }
 
+export interface ParallaxCloudDTO {
+  id: number;
+  image: CloudinaryMediaDTO;
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
+  speed: number;
+  z_index?: number;
+}
+
 export interface HeroBannerDTO {
   badge?: string;
   title: string;
@@ -90,6 +101,7 @@ export interface HeroBannerDTO {
   image?: CloudinaryMediaDTO;
   bg_image?: CloudinaryMediaDTO;
   badges?: BadgeDTO[];
+  clouds?: ParallaxCloudDTO[];
 }
 
 export interface StatsBannerDTO {

@@ -403,8 +403,49 @@ const aboutPageSeed = {
   },
 };
 
+async function revalidateFrontend(strapi: Core.Strapi, paths: string[]) {
+  const frontendUrl = process.env.FRONTEND_URL?.replace(/\/$/, '');
+  const secret = process.env.REVALIDATE_SECRET;
+
+  if (!frontendUrl || !secret) {
+    strapi.log.warn('[isr] FRONTEND_URL or REVALIDATE_SECRET not set — skipping revalidation.');
+    return;
+  }
+
+  try {
+    const res = await fetch(`${frontendUrl}/api/revalidate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, paths }),
+    });
+
+    if (!res.ok) {
+      strapi.log.error(`[isr] Revalidation failed — HTTP ${res.status}: ${await res.text()}`);
+      return;
+    }
+
+    strapi.log.info(`[isr] Revalidated: ${paths.join(', ')}`);
+  } catch (err) {
+    strapi.log.error(`[isr] Could not reach frontend: ${err}`);
+  }
+}
+
 export default {
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register({ strapi }: { strapi: Core.Strapi }) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (strapi.documents as any).use(async (ctx: any, next: () => Promise<any>) => {
+      const result = await next();
+      if (ctx.uid === 'api::home-page.home-page' && ctx.action === 'publish') {
+        // Defer past current request cycle so Strapi's entity cache flushes first
+        setImmediate(() => {
+          revalidateFrontend(strapi, ['/']).catch((err) => {
+            strapi.log.error(`[isr] Deferred revalidation error: ${err}`);
+          });
+        });
+      }
+      return result;
+    });
+  },
 
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     await seedGlobal(strapi);

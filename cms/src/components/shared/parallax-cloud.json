@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_shared_parallax_clouds",
+  "info": {
+    "displayName": "Parallax Cloud",
+    "description": "A decorative cloud image layered over a hero banner that drifts at its own speed on scroll",
+    "icon": "cloud"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "top": {
+      "type": "string"
+    },
+    "bottom": {
+      "type": "string"
+    },
+    "left": {
+      "type": "string"
+    },
+    "right": {
+      "type": "string"
+    },
+    "speed": {
+      "type": "decimal",
+      "required": true,
+      "default": 0.3
+    },
+    "z_index": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

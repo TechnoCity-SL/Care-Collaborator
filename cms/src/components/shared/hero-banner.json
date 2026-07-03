@@ -46,6 +46,11 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.badge"
+    },
+    "clouds": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.parallax-cloud"
     }
   }
 }
