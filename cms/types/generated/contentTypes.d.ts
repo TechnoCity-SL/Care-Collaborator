@@ -452,12 +452,16 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    average_saving_body: Schema.Attribute.Text;
+    average_saving_heading: Schema.Attribute.String;
     comparison_with: Schema.Attribute.Component<'shared.badge', true>;
     comparison_without: Schema.Attribute.Component<'shared.badge', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
+    diff_card_badge: Schema.Attribute.String;
+    diff_card_heading: Schema.Attribute.String;
     diff_features: Schema.Attribute.Component<'shared.feature-item', true>;
     diff_heading: Schema.Attribute.String & Schema.Attribute.Required;
     diff_label: Schema.Attribute.String;
@@ -476,8 +480,10 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     origin_body: Schema.Attribute.RichText;
     origin_heading: Schema.Attribute.String & Schema.Attribute.Required;
     origin_label: Schema.Attribute.String;
+    problem_badge: Schema.Attribute.String;
     problem_heading: Schema.Attribute.String;
-    problem_items: Schema.Attribute.Component<'shared.badge', true>;
+    problem_items: Schema.Attribute.Component<'shared.checklist-item', true>;
+    problem_subtitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     stats_banner: Schema.Attribute.Component<'shared.stats-banner', false>;

@@ -1,21 +1,13 @@
 import Image from 'next/image';
-import type { FeatureItemDTO, FeatureIconKey } from '@/types/pages';
-
-const ICON_SRC: Record<FeatureIconKey, string> = {
-  data_sovereignty: '/images/features/icons/data-sovereignty.svg',
-  e_signature: '/images/features/icons/e-signature.svg',
-  russell_kennedy: '/images/features/icons/russell-kennedy.svg',
-  budget_scenarios: '/images/features/icons/budget-scenarios.svg',
-  integrations: '/images/features/icons/integrations.svg',
-  risks_alerts: '/images/features/icons/risks-alerts.svg',
-};
+import { FEATURE_ICON_SRC } from '@/lib/featureIcons';
+import type { FeatureItemDTO } from '@/types/pages';
 
 interface FeatureCardProps {
   feature: FeatureItemDTO;
 }
 
 export function FeatureCard({ feature }: FeatureCardProps) {
-  const iconSrc = feature.icon_key ? ICON_SRC[feature.icon_key] : undefined;
+  const iconSrc = feature.icon_key ? FEATURE_ICON_SRC[feature.icon_key] : undefined;
 
   return (
     <div className="flex flex-col gap-6 rounded-[16px] bg-surface-card p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg">

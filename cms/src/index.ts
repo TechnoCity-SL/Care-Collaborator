@@ -301,7 +301,7 @@ const aboutPageSeed = {
     ],
   },
   stats_banner: {
-    heading: 'The numbers behind our impact',
+    theme: 'plain' as const,
     stats: [
       { value: '500+', label: 'Providers using Care Collaborator' },
       { value: '30%', label: 'Average reduction in onboarding costs' },
@@ -314,11 +314,29 @@ const aboutPageSeed = {
   origin_body:
     "In 2015, our founders watched care coordinators leave first home visits carrying stacks of partially-filled forms — only to return days later with the right paperwork. Participants waited. Providers paid. Nobody won.\n\nThe insight was simple: **the tools being used for onboarding were designed for an era before cloud software, mobile devices, and digital signatures existed.** Spreadsheets. Word docs. Wet ink. Repeat home visits just to get a signature.\n\nWe built Care Collaborator to replace that entire workflow with a single, seamless platform — one that handles everything from care planning and individualised budgets through to the legally compliant final signature, right there in the participant's home, on the first visit.\n\nToday we partner with providers of all sizes across Australia — from small community operators to large national organisations — and we're still guided by that original mission: **handle the compliance and calculations so your team can focus on the person in the room.**",
   problem_heading: 'The problem we solved',
+  problem_badge: 'Founded 2015',
+  problem_subtitle: 'What we kept seeing in the field',
   problem_items: [
-    { label: 'Multiple return visits' },
-    { label: 'Outdated paper forms' },
-    { label: 'Delayed revenue' },
-    { label: 'Double-handling data' },
+    {
+      title: 'Multiple return visits',
+      description:
+        'Coordinators driving back just to collect a signature — wasting hours and fuel every week.',
+    },
+    {
+      title: 'Outdated paper forms',
+      description:
+        'Care plans and budgets handwritten, scanned, filed — and nearly impossible to audit.',
+    },
+    {
+      title: 'Delayed revenue',
+      description:
+        "Providers couldn't claim subsidies until paperwork was signed — sometimes weeks later.",
+    },
+    {
+      title: 'Double-handling data',
+      description:
+        'The same participant details entered into 3, 4, sometimes 5 different systems.',
+    },
   ],
   mission_label: 'OUR MISSION',
   mission_quote:
@@ -327,21 +345,25 @@ const aboutPageSeed = {
     'Care Collaborator exists to give back time — time that coordinators spend on paperwork, on return visits, on re-entering data — and redirect it to the people who need care most. We build software that makes the hard parts easy, the slow parts fast, and the risky parts compliant.\n\nEvery feature we build, every integration we develop, every legal template we maintain is guided by one question: does this help a care recipient get better care sooner?',
   mission_values: [
     {
+      icon_key: 'people' as const,
       title: 'People first',
       description:
         'Every decision starts with the participant. Technology should serve care, not the other way around.',
     },
     {
+      icon_key: 'australia' as const,
       title: 'Built for Australia',
       description:
         'Australian servers, Australian legislation, Australian care sector. We\'re local and we stay local.',
     },
     {
+      icon_key: 'scales' as const,
       title: 'Compliance without compromise',
       description:
         'Russell Kennedy agreements, automatic legislative updates, full audit trails. Compliance built in, not bolted on.',
     },
     {
+      icon_key: 'speed' as const,
       title: 'Speed that matters',
       description:
         'Faster onboarding means participants get care sooner and providers start billing sooner. Win-win.',
@@ -353,21 +375,25 @@ const aboutPageSeed = {
     "We've built one tool that handles every step so your advisors focus on people, not paperwork.",
   diff_features: [
     {
+      icon_key: 'star' as const,
       title: 'Legal agreements built in, not add-ons',
       description:
         'Russell Kennedy service agreements are embedded in the platform and auto-update with every legislative change. No legal bills, no manual updates, no risk.',
     },
     {
+      icon_key: 'check_circle' as const,
       title: 'One visit, fully onboarded',
       description:
         'From intake to signed agreement in a single appointment. No return trips. No waiting. Participants can start receiving care — and providers can start claiming — same day.',
     },
     {
+      icon_key: 'shield' as const,
       title: 'Australian servers & data sovereignty',
       description:
         'All data is stored and processed on Australian servers. Full compliance with the Privacy Act 1988 and aged care legislation. No overseas data transfers.',
     },
     {
+      icon_key: 'heart_care' as const,
       title: 'Built specifically for aged care & NDIS',
       description:
         "Not a generic CRM or document tool adapted for care. Care Collaborator is purpose-built for HCP and NDIS onboarding workflows, by people who understand the sector.",
@@ -389,6 +415,10 @@ const aboutPageSeed = {
     { label: 'Full digital audit trail' },
     { label: 'Auto-updated agreements' },
   ],
+  diff_card_badge: 'Before vs After',
+  diff_card_heading: 'The old way vs Care Collaborator',
+  average_saving_heading: 'Average saving',
+  average_saving_body: '30% reduction in onboarding costs. Hundreds of hours saved per year.',
   cta_banner: {
     heading: 'Ready to transform your onboarding?',
     subtext: 'See Care Collaborator in action with a personalised 30-minute demo.',

@@ -12,6 +12,19 @@ export interface SharedBadge extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedChecklistItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_checklist_items';
+  info: {
+    description: 'A titled checklist row with a supporting description';
+    displayName: 'Checklist Item';
+    icon: 'check';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedCtaBanner extends Struct.ComponentSchema {
   collectionName: 'components_shared_cta_banners';
   info: {
@@ -61,6 +74,14 @@ export interface SharedFeatureItem extends Struct.ComponentSchema {
         'budget_scenarios',
         'integrations',
         'risks_alerts',
+        'people',
+        'australia',
+        'scales',
+        'speed',
+        'star',
+        'check_circle',
+        'shield',
+        'heart_care',
       ]
     >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -89,6 +110,8 @@ export interface SharedHeroBanner extends Struct.ComponentSchema {
   };
   attributes: {
     badge: Schema.Attribute.String;
+    badge_style: Schema.Attribute.Enumeration<['current', 'figma']> &
+      Schema.Attribute.DefaultTo<'current'>;
     badges: Schema.Attribute.Component<'shared.badge', true>;
     bg_image: Schema.Attribute.Media<'images'>;
     clouds: Schema.Attribute.Component<'shared.parallax-cloud', true>;
@@ -191,9 +214,11 @@ export interface SharedStatsBanner extends Struct.ComponentSchema {
   };
   attributes: {
     bg_image: Schema.Attribute.Media<'images'>;
-    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    heading: Schema.Attribute.String;
     label: Schema.Attribute.String;
     stats: Schema.Attribute.Component<'shared.stat-item', true>;
+    theme: Schema.Attribute.Enumeration<['gradient', 'plain']> &
+      Schema.Attribute.DefaultTo<'gradient'>;
   };
 }
 
@@ -214,6 +239,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.badge': SharedBadge;
+      'shared.checklist-item': SharedChecklistItem;
       'shared.cta-banner': SharedCtaBanner;
       'shared.cta-button': SharedCtaButton;
       'shared.feature-item': SharedFeatureItem;

@@ -11,8 +11,7 @@
       "type": "string"
     },
     "heading": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "stats": {
       "type": "component",
@@ -24,6 +23,11 @@
       "multiple": false,
       "required": false,
       "allowedTypes": ["images"]
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": ["gradient", "plain"],
+      "default": "gradient"
     }
   }
 }

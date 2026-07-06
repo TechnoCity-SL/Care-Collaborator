@@ -32,11 +32,25 @@ export type FeatureIconKey =
   | 'russell_kennedy'
   | 'budget_scenarios'
   | 'integrations'
-  | 'risks_alerts';
+  | 'risks_alerts'
+  | 'people'
+  | 'australia'
+  | 'scales'
+  | 'speed'
+  | 'star'
+  | 'check_circle'
+  | 'shield'
+  | 'heart_care';
 
 export interface FeatureItemDTO {
   id: number;
   icon_key?: FeatureIconKey;
+  title: string;
+  description?: string;
+}
+
+export interface ChecklistItemDTO {
+  id: number;
   title: string;
   description?: string;
 }
@@ -91,6 +105,8 @@ export interface ParallaxCloudDTO {
   z_index?: number;
 }
 
+export type TrustBadgeStyle = 'current' | 'figma';
+
 export interface HeroBannerDTO {
   badge?: string;
   title: string;
@@ -101,14 +117,18 @@ export interface HeroBannerDTO {
   image?: CloudinaryMediaDTO;
   bg_image?: CloudinaryMediaDTO;
   badges?: BadgeDTO[];
+  badge_style?: TrustBadgeStyle;
   clouds?: ParallaxCloudDTO[];
 }
 
+export type StatsBannerTheme = 'gradient' | 'plain';
+
 export interface StatsBannerDTO {
   label?: string;
-  heading: string;
+  heading?: string;
   stats: StatItemDTO[];
   bg_image?: CloudinaryMediaDTO;
+  theme?: StatsBannerTheme;
 }
 
 // ─── Partner logos marquee ────────────────────────────────────────────────────
@@ -162,7 +182,9 @@ export interface AboutPageDTO {
   origin_heading: string;
   origin_body: string;
   problem_heading?: string;
-  problem_items: BadgeDTO[];
+  problem_badge?: string;
+  problem_subtitle?: string;
+  problem_items: ChecklistItemDTO[];
   mission_label?: string;
   mission_quote: string;
   mission_body?: string;
@@ -173,6 +195,10 @@ export interface AboutPageDTO {
   diff_features: FeatureItemDTO[];
   comparison_without: BadgeDTO[];
   comparison_with: BadgeDTO[];
+  diff_card_badge?: string;
+  diff_card_heading?: string;
+  average_saving_heading?: string;
+  average_saving_body?: string;
   cta_banner?: CtaBannerDTO;
   seo: SeoDTO;
 }

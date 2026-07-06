@@ -15,7 +15,15 @@
         "russell_kennedy",
         "budget_scenarios",
         "integrations",
-        "risks_alerts"
+        "risks_alerts",
+        "people",
+        "australia",
+        "scales",
+        "speed",
+        "star",
+        "check_circle",
+        "shield",
+        "heart_care"
       ],
       "required": false
     },

@@ -47,6 +47,11 @@
       "repeatable": true,
       "component": "shared.badge"
     },
+    "badge_style": {
+      "type": "enumeration",
+      "enum": ["current", "figma"],
+      "default": "current"
+    },
     "clouds": {
       "type": "component",
       "repeatable": true,

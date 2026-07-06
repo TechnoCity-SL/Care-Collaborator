@@ -2,9 +2,10 @@ import type { StatItemDTO } from '@/types/pages';
 
 interface StatItemProps {
   stat: StatItemDTO;
+  isPlain?: boolean;
 }
 
-export function StatItem({ stat }: StatItemProps) {
+export function StatItem({ stat, isPlain = false }: StatItemProps) {
   return (
     <div className="flex flex-col gap-2 px-4 lg:gap-3 lg:px-12 lg:first:pl-0 lg:last:pr-0">
       <p
@@ -13,7 +14,7 @@ export function StatItem({ stat }: StatItemProps) {
       >
         {stat.value}
       </p>
-      <p className="font-body text-[14px] leading-[1.5] text-white lg:text-[16px]">
+      <p className={`font-body text-[14px] leading-[1.5] lg:text-[16px] ${isPlain ? 'text-text-body' : 'text-white'}`}>
         {stat.label}
       </p>
     </div>

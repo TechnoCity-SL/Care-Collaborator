@@ -35,10 +35,16 @@
     "problem_heading": {
       "type": "string"
     },
+    "problem_badge": {
+      "type": "string"
+    },
+    "problem_subtitle": {
+      "type": "string"
+    },
     "problem_items": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.badge"
+      "component": "shared.checklist-item"
     },
     "mission_label": {
       "type": "string"
@@ -79,6 +85,18 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.badge"
+    },
+    "diff_card_badge": {
+      "type": "string"
+    },
+    "diff_card_heading": {
+      "type": "string"
+    },
+    "average_saving_heading": {
+      "type": "string"
+    },
+    "average_saving_body": {
+      "type": "text"
     },
     "cta_banner": {
       "type": "component",

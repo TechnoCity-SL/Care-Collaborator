@@ -35,7 +35,7 @@ export function Header({ globalData }: HeaderProps) {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 border-b border-white/20 bg-white/95 backdrop-blur-[15px]"
+      className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-[15px]"
     >
       <div className="mx-auto flex h-[74px] max-w-[1920px] items-center justify-between px-6 lg:px-[70px]">
         {/* Logo */}

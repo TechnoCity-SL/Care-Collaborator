@@ -20,6 +20,7 @@ export function HeroSection({ data }: HeroSectionProps) {
     image,
     bg_image,
     badges,
+    badge_style,
     clouds,
   } = data;
 
@@ -27,6 +28,7 @@ export function HeroSection({ data }: HeroSectionProps) {
   const hasBgImage = !!bg_image?.url;
   const hasBadgeChips = !!badges?.length;
   const hasClouds = !!clouds?.length;
+  const trustBadgeTheme = badge_style === 'figma' ? 'trust' : 'dark';
 
   return (
     <section
@@ -69,24 +71,32 @@ export function HeroSection({ data }: HeroSectionProps) {
         <div className={`flex gap-14 ${hasContentImage ? 'flex-col lg:flex-row lg:items-center' : 'flex-col'}`}>
 
           {/* Text column */}
-          <div className={`flex flex-col gap-10 lg:gap-[72px] ${hasContentImage ? 'lg:w-1/2' : 'max-w-[880px]'}`}>
+          <div
+            className={`flex flex-col gap-10 lg:gap-[72px] ${
+              hasContentImage ? 'lg:w-1/2' : 'mx-auto max-w-[880px] items-center text-center'
+            }`}
+          >
 
             {/* Top group: badge → title → subtitle */}
-            <div className="flex flex-col gap-6 items-start lg:gap-[32px]">
+            <div className={`flex flex-col gap-6 lg:gap-[32px] ${hasContentImage ? 'items-start' : 'items-center'}`}>
               {badge && <Badge label={badge} theme="hero" />}
 
-              <div className="flex flex-col gap-5 max-w-[770px] w-full lg:gap-[24px]">
+              <div
+                className={`flex flex-col gap-5 max-w-[770px] w-full lg:gap-[24px] ${hasContentImage ? '' : 'items-center'}`}
+              >
                 <Heading
                   as="h1"
                   id="hero-heading"
                   text={title}
                   highlight={title_highlight}
-                  className="font-heading text-[36px] font-medium leading-[44px] text-white sm:text-[46px] sm:leading-[56px] lg:text-[60px] lg:leading-[72px]"
+                  className={`font-heading text-[36px] font-medium leading-[44px] text-white sm:text-[46px] sm:leading-[56px] lg:text-[60px] lg:leading-[72px] ${hasContentImage ? '' : 'text-center'}`}
                   highlightClassName="font-bold text-[#003677]"
                 />
 
                 {subtitle && (
-                  <p className="font-body text-[16px] leading-normal text-white">
+                  <p
+                    className={`font-body text-[16px] leading-normal text-white ${hasContentImage ? '' : 'max-w-[650px] text-center'}`}
+                  >
                     {subtitle}
                   </p>
                 )}
@@ -94,9 +104,9 @@ export function HeroSection({ data }: HeroSectionProps) {
             </div>
 
             {/* Bottom group: CTA buttons + optional trust badges */}
-            <div className="flex flex-col gap-6 items-start">
+            <div className={`flex flex-col gap-6 ${hasContentImage ? 'items-start' : 'items-center'}`}>
               {(primary_cta || secondary_cta) && (
-                <div className="flex flex-wrap gap-3">
+                <div className={`flex flex-wrap gap-3 ${hasContentImage ? '' : 'justify-center'}`}>
                   {primary_cta && (
                     <Button label={primary_cta.label} href={primary_cta.url} variant="primary" size="lg" />
                   )}
@@ -107,9 +117,9 @@ export function HeroSection({ data }: HeroSectionProps) {
               )}
 
               {hasBadgeChips && (
-                <div className="flex flex-wrap gap-3">
+                <div className={`flex flex-wrap gap-3 ${hasContentImage ? '' : 'justify-center'}`}>
                   {badges.map((b) => (
-                    <Badge key={b.id} label={b.label} theme="dark" />
+                    <Badge key={b.id} label={b.label} theme={trustBadgeTheme} />
                   ))}
                 </div>
               )}
