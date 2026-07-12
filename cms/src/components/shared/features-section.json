@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_features_sections",
+  "info": {
+    "displayName": "Features Section",
+    "icon": "grid",
+    "description": "Feature grid with heading and repeatable feature cards"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "heading_highlight": {
+      "type": "string"
+    },
+    "subtext": {
+      "type": "text"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-item"
+    }
+  }
+}

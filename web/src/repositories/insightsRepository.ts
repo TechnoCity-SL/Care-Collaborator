@@ -10,6 +10,11 @@ export async function fetchInsightsPage(): Promise<InsightsPageDTO> {
       '&populate[hero_banner][populate][bg_image][fields][1]=alternativeText' +
       '&populate[hero_banner][populate][bg_image][fields][2]=width' +
       '&populate[hero_banner][populate][bg_image][fields][3]=height' +
+      '&populate[hero_banner][populate][badges]=*' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][0]=url' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][1]=alternativeText' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][2]=width' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][3]=height' +
       '&populate[sidebar_cta_primary]=*' +
       '&populate[sidebar_cta_secondary]=*' +
       '&populate[cta_banner][populate][primary_cta]=*' +

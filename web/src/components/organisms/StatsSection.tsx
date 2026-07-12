@@ -10,11 +10,12 @@ export function StatsSection({ data }: StatsSectionProps) {
   const { label, heading, stats, bg_image, theme = 'gradient' } = data;
   const hasBgImage = !!bg_image?.url;
   const isPlain = theme === 'plain';
+  const isLightBg = isPlain || !hasBgImage;
 
   return (
     <section
       className={`relative overflow-hidden py-16 md:py-20 lg:py-[120px] ${
-        hasBgImage ? '' : isPlain ? 'bg-white border-b-2 border-[#929292]' : 'bg-stats-gradient'
+        hasBgImage ? '' : isPlain ? 'bg-white border-b-2 border-[#929292]' : 'bg-surface-video'
       }`}
       aria-labelledby={heading ? 'stats-heading' : undefined}
       aria-label={heading ? undefined : 'Key statistics'}
@@ -29,7 +30,7 @@ export function StatsSection({ data }: StatsSectionProps) {
         />
       )}
 
-      {!isPlain && (
+      {!isPlain && hasBgImage && (
         <>
           {/* Sparkle — left edge decoration */}
           <div
@@ -41,12 +42,12 @@ export function StatsSection({ data }: StatsSectionProps) {
           </div>
 
           {/* Bird mascot — bottom-right */}
-          <div
+          {/* <div
             className="pointer-events-none absolute bottom-0 right-0 hidden select-none lg:block"
             aria-hidden="true"
           >
             <Image src="/images/steps-section/bird.png" alt="" width={220} height={220} className="object-contain" />
-          </div>
+          </div> */}
         </>
       )}
 
@@ -66,7 +67,7 @@ export function StatsSection({ data }: StatsSectionProps) {
               <h2
                 id="stats-heading"
                 className={`font-heading text-[clamp(36px,4vw,50px)] font-semibold leading-[1.15] ${
-                  isPlain ? 'text-text-dark' : 'text-white'
+                  isLightBg ? 'text-text-dark' : 'text-white'
                 }`}
               >
                 {heading}
@@ -78,11 +79,11 @@ export function StatsSection({ data }: StatsSectionProps) {
         {/* Stats row — 2-col on mobile, 4-col on desktop with dividers */}
         <div
           className={`grid grid-cols-2 gap-y-10 sm:gap-y-12 lg:flex lg:divide-x ${
-            isPlain ? 'lg:divide-border' : 'lg:divide-white/25'
+            isLightBg ? 'lg:divide-border' : 'lg:divide-white/25'
           }`}
         >
           {stats.map((stat) => (
-            <StatItem key={stat.id} stat={stat} isPlain={isPlain} />
+            <StatItem key={stat.id} stat={stat} isPlain={isLightBg} />
           ))}
         </div>
       </div>

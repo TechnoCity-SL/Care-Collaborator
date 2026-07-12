@@ -22,81 +22,20 @@
       "repeatable": false,
       "component": "shared.stats-banner"
     },
-    "origin_label": {
-      "type": "string"
-    },
-    "origin_heading": {
-      "type": "string",
-      "required": true
-    },
-    "origin_body": {
-      "type": "richtext"
-    },
-    "problem_heading": {
-      "type": "string"
-    },
-    "problem_badge": {
-      "type": "string"
-    },
-    "problem_subtitle": {
-      "type": "string"
-    },
-    "problem_items": {
+    "origin_section": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.checklist-item"
+      "repeatable": false,
+      "component": "shared.origin-section"
     },
-    "mission_label": {
-      "type": "string"
-    },
-    "mission_quote": {
-      "type": "text",
-      "required": true
-    },
-    "mission_body": {
-      "type": "text"
-    },
-    "mission_values": {
+    "mission_section": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.feature-item"
+      "repeatable": false,
+      "component": "shared.mission-section"
     },
-    "diff_label": {
-      "type": "string"
-    },
-    "diff_heading": {
-      "type": "string",
-      "required": true
-    },
-    "diff_subtext": {
-      "type": "text"
-    },
-    "diff_features": {
+    "diff_section": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.feature-item"
-    },
-    "comparison_without": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.badge"
-    },
-    "comparison_with": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.badge"
-    },
-    "diff_card_badge": {
-      "type": "string"
-    },
-    "diff_card_heading": {
-      "type": "string"
-    },
-    "average_saving_heading": {
-      "type": "string"
-    },
-    "average_saving_body": {
-      "type": "text"
+      "repeatable": false,
+      "component": "shared.diff-section"
     },
     "cta_banner": {
       "type": "component",

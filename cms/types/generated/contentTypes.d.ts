@@ -452,20 +452,11 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    average_saving_body: Schema.Attribute.Text;
-    average_saving_heading: Schema.Attribute.String;
-    comparison_with: Schema.Attribute.Component<'shared.badge', true>;
-    comparison_without: Schema.Attribute.Component<'shared.badge', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
-    diff_card_badge: Schema.Attribute.String;
-    diff_card_heading: Schema.Attribute.String;
-    diff_features: Schema.Attribute.Component<'shared.feature-item', true>;
-    diff_heading: Schema.Attribute.String & Schema.Attribute.Required;
-    diff_label: Schema.Attribute.String;
-    diff_subtext: Schema.Attribute.Text;
+    diff_section: Schema.Attribute.Component<'shared.diff-section', false>;
     hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -473,17 +464,11 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
       'api::about-page.about-page'
     > &
       Schema.Attribute.Private;
-    mission_body: Schema.Attribute.Text;
-    mission_label: Schema.Attribute.String;
-    mission_quote: Schema.Attribute.Text & Schema.Attribute.Required;
-    mission_values: Schema.Attribute.Component<'shared.feature-item', true>;
-    origin_body: Schema.Attribute.RichText;
-    origin_heading: Schema.Attribute.String & Schema.Attribute.Required;
-    origin_label: Schema.Attribute.String;
-    problem_badge: Schema.Attribute.String;
-    problem_heading: Schema.Attribute.String;
-    problem_items: Schema.Attribute.Component<'shared.checklist-item', true>;
-    problem_subtitle: Schema.Attribute.String;
+    mission_section: Schema.Attribute.Component<
+      'shared.mission-section',
+      false
+    >;
+    origin_section: Schema.Attribute.Component<'shared.origin-section', false>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     stats_banner: Schema.Attribute.Component<'shared.stats-banner', false>;
@@ -594,11 +579,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
-    features: Schema.Attribute.Component<'shared.feature-item', true>;
-    features_heading: Schema.Attribute.String & Schema.Attribute.Required;
-    features_heading_highlight: Schema.Attribute.String;
-    features_label: Schema.Attribute.String;
-    features_subtext: Schema.Attribute.Text;
+    features_section: Schema.Attribute.Component<
+      'shared.features-section',
+      false
+    >;
     hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -613,19 +597,11 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     stats_banner: Schema.Attribute.Component<'shared.stats-banner', false>;
-    steps: Schema.Attribute.Component<'shared.step-item', true>;
-    steps_heading: Schema.Attribute.String & Schema.Attribute.Required;
-    steps_heading_highlight: Schema.Attribute.String;
-    steps_label: Schema.Attribute.String;
+    steps_section: Schema.Attribute.Component<'shared.steps-section', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    video_file: Schema.Attribute.Media<'videos' | 'images'>;
-    video_heading: Schema.Attribute.String & Schema.Attribute.Required;
-    video_heading_highlight: Schema.Attribute.String;
-    video_section_label: Schema.Attribute.String;
-    video_subtext: Schema.Attribute.Text;
-    video_url: Schema.Attribute.String;
+    video_section: Schema.Attribute.Component<'shared.video-section', false>;
   };
 }
 

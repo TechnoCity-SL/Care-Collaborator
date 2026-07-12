@@ -1,41 +1,62 @@
+import Image from 'next/image';
 import { SectionLabel } from '@/components/atoms/SectionLabel';
 import { Heading } from '@/components/atoms/Heading';
 import { DiffFeatureItem } from '@/components/molecules/DiffFeatureItem';
 import { ComparisonCard } from '@/components/molecules/ComparisonCard';
-import type { AboutPageDTO } from '@/types/pages';
+import type { DiffSectionDTO } from '@/types/pages';
 
 interface DifferenceSectionProps {
-  data: AboutPageDTO;
+  data: DiffSectionDTO;
 }
 
 export function DifferenceSection({ data }: DifferenceSectionProps) {
   const {
-    diff_label,
-    diff_heading,
-    diff_subtext,
-    diff_features,
+    label: diff_label,
+    heading: diff_heading,
+    subtext: diff_subtext,
+    features: diff_features,
     comparison_without,
     comparison_with,
-    diff_card_badge,
-    diff_card_heading,
+    card_badge: diff_card_badge,
+    card_heading: diff_card_heading,
     average_saving_heading,
     average_saving_body,
+    bg_image: diff_bg_image,
   } = data;
+  const hasBgImage = !!diff_bg_image?.url;
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-[120px]" aria-labelledby="diff-heading">
-      <div className="mx-auto max-w-[1300px] px-6 lg:px-0">
+    <section
+      className={`relative overflow-hidden py-16 md:py-20 lg:py-[120px] ${hasBgImage ? '' : 'bg-white'}`}
+      aria-labelledby="diff-heading"
+    >
+      {hasBgImage && (
+        <>
+          <Image
+            src={diff_bg_image.url}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-blue-dark/40" aria-hidden="true" />
+        </>
+      )}
+
+      <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            {diff_label && <SectionLabel label={diff_label} className="mb-3" />}
+            {diff_label && (
+              <SectionLabel label={diff_label} theme={hasBgImage ? 'dark' : 'light'} className="mb-3" />
+            )}
             <Heading
               as="h2"
               id="diff-heading"
               text={diff_heading}
-              className="font-heading text-[clamp(28px,4vw,40px)] font-semibold leading-[1.15] text-text-dark"
+              className={`font-heading text-[clamp(28px,4vw,40px)] font-semibold leading-[1.15] ${hasBgImage ? 'text-white' : 'text-text-dark'}`}
             />
             {diff_subtext && (
-              <p className="mt-4 font-body text-[15px] leading-[1.6] text-text-body">
+              <p className={`mt-4 font-body text-[15px] leading-[1.6] ${hasBgImage ? 'text-white/80' : 'text-text-body'}`}>
                 {diff_subtext}
               </p>
             )}
@@ -43,7 +64,7 @@ export function DifferenceSection({ data }: DifferenceSectionProps) {
             {diff_features.length > 0 && (
               <div className="mt-8 flex flex-col gap-6">
                 {diff_features.map((feature) => (
-                  <DiffFeatureItem key={feature.id} feature={feature} />
+                  <DiffFeatureItem key={feature.id} feature={feature} isLight={!hasBgImage} />
                 ))}
               </div>
             )}

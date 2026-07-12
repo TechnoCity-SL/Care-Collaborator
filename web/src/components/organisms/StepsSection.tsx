@@ -1,18 +1,16 @@
 import Image from 'next/image';
 import { SectionLabel } from '@/components/atoms/SectionLabel';
 import { StepCard } from '@/components/molecules/StepCard';
-import type { StepItemDTO } from '@/types/pages';
+import type { StepsSectionDTO } from '@/types/pages';
 
 const BIRD_ASSET = '/images/steps-section/bird.png';
 
 interface StepsSectionProps {
-  label?: string;
-  heading: string;
-  headingHighlight?: string;
-  steps: StepItemDTO[];
+  data: StepsSectionDTO;
 }
 
-export function StepsSection({ label, heading, headingHighlight, steps }: StepsSectionProps) {
+export function StepsSection({ data }: StepsSectionProps) {
+  const { label, heading, heading_highlight: headingHighlight, steps } = data;
   const resolvedHighlight = (() => {
     if (headingHighlight && heading.includes(headingHighlight)) return headingHighlight;
     return null;
@@ -48,7 +46,7 @@ export function StepsSection({ label, heading, headingHighlight, steps }: StepsS
     <section className="relative overflow-hidden bg-surface-steps py-16 md:py-20 lg:py-[120px]" aria-labelledby="steps-heading">
       {/* Bird mascot — left edge, vertically centred on the steps row */}
       <div
-        className="pointer-events-none absolute bottom-0 left-0 hidden select-none lg:block"
+        className="pointer-events-none absolute bottom-[10%] -translate-y-1/2 left-0 hidden select-none lg:block"
         aria-hidden="true"
       >
         <Image

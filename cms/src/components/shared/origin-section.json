@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_shared_origin_sections",
+  "info": {
+    "displayName": "Origin Section",
+    "icon": "book",
+    "description": "Company origin story with a problem-solved checklist card"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "bg_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "problem_heading": {
+      "type": "string"
+    },
+    "problem_badge": {
+      "type": "string"
+    },
+    "problem_subtitle": {
+      "type": "string"
+    },
+    "problem_items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.checklist-item"
+    }
+  }
+}

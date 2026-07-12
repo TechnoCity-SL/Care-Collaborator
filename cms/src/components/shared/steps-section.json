@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_steps_sections",
+  "info": {
+    "displayName": "Steps Section",
+    "icon": "bulletList",
+    "description": "How-it-works section with heading and repeatable numbered steps"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "heading_highlight": {
+      "type": "string"
+    },
+    "steps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.step-item"
+    }
+  }
+}

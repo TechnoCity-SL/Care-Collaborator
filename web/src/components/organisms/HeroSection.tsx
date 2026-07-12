@@ -28,11 +28,12 @@ export function HeroSection({ data }: HeroSectionProps) {
   const hasBgImage = !!bg_image?.url;
   const hasBadgeChips = !!badges?.length;
   const hasClouds = !!clouds?.length;
-  const trustBadgeTheme = badge_style === 'figma' ? 'trust' : 'dark';
+  const isLight = !hasBgImage;
+  const trustBadgeTheme = isLight ? 'light' : badge_style === 'figma' ? 'trust' : 'dark';
 
   return (
     <section
-      className={`relative overflow-hidden ${hasBgImage ? '' : 'bg-hero-gradient'}`}
+      className={`relative overflow-hidden ${isLight ? 'bg-surface-video' : ''}`}
       aria-labelledby="hero-heading"
     >
       {hasBgImage && (
@@ -44,25 +45,6 @@ export function HeroSection({ data }: HeroSectionProps) {
           className="object-cover object-center"
           priority
         />
-      )}
-
-      {/* Decorative cloud blobs */}
-      {!hasBgImage && (
-        <div className="pointer-events-none absolute inset-0 select-none" aria-hidden="true">
-          <div className="absolute -left-24 -top-16 h-64 w-80 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute -left-10 top-8 h-40 w-56 rounded-full bg-white/15 blur-2xl" />
-          <div className="absolute -bottom-10 -left-16 h-52 w-72 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute -top-8 right-32 h-40 w-52 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute right-10 top-10 h-28 w-40 rounded-full bg-white/15 blur-2xl" />
-          <svg
-            className="absolute right-[12%] top-[30%] h-6 w-6 text-blue-dark/40"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z" />
-          </svg>
-        </div>
       )}
 
       {hasClouds && clouds.map((cloud) => <ParallaxCloud key={cloud.id} cloud={cloud} />)}
@@ -79,7 +61,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 
             {/* Top group: badge → title → subtitle */}
             <div className={`flex flex-col gap-6 lg:gap-[32px] ${hasContentImage ? 'items-start' : 'items-center'}`}>
-              {badge && <Badge label={badge} theme="hero" />}
+              {badge && <Badge label={badge} theme={isLight ? 'light' : 'hero'} />}
 
               <div
                 className={`flex flex-col gap-5 max-w-[770px] w-full lg:gap-[24px] ${hasContentImage ? '' : 'items-center'}`}
@@ -89,13 +71,13 @@ export function HeroSection({ data }: HeroSectionProps) {
                   id="hero-heading"
                   text={title}
                   highlight={title_highlight}
-                  className={`font-heading text-[36px] font-medium leading-[44px] text-white sm:text-[46px] sm:leading-[56px] lg:text-[60px] lg:leading-[72px] ${hasContentImage ? '' : 'text-center'}`}
+                  className={`font-heading text-[36px] font-medium leading-[44px] sm:text-[46px] sm:leading-[56px] lg:text-[60px] lg:leading-[72px] ${isLight ? 'text-text-dark' : 'text-white'} ${hasContentImage ? '' : 'text-center'}`}
                   highlightClassName="font-bold text-[#003677]"
                 />
 
                 {subtitle && (
                   <p
-                    className={`font-body text-[16px] leading-normal text-white ${hasContentImage ? '' : 'max-w-[650px] text-center'}`}
+                    className={`font-body text-[16px] leading-normal ${isLight ? 'text-text-body' : 'text-white'} ${hasContentImage ? '' : 'max-w-[650px] text-center'}`}
                   >
                     {subtitle}
                   </p>
@@ -111,7 +93,12 @@ export function HeroSection({ data }: HeroSectionProps) {
                     <Button label={primary_cta.label} href={primary_cta.url} variant="primary" size="lg" />
                   )}
                   {secondary_cta && (
-                    <Button label={secondary_cta.label} href={secondary_cta.url} variant="secondary" size="lg" />
+                    <Button
+                      label={secondary_cta.label}
+                      href={secondary_cta.url}
+                      variant={isLight ? 'secondary-light' : 'secondary'}
+                      size="lg"
+                    />
                   )}
                 </div>
               )}

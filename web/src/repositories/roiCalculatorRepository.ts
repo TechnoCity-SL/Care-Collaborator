@@ -10,6 +10,11 @@ export async function fetchRoiCalculatorPage(): Promise<RoiCalculatorPageDTO> {
       '&populate[hero_banner][populate][bg_image][fields][1]=alternativeText' +
       '&populate[hero_banner][populate][bg_image][fields][2]=width' +
       '&populate[hero_banner][populate][bg_image][fields][3]=height' +
+      '&populate[hero_banner][populate][badges]=*' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][0]=url' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][1]=alternativeText' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][2]=width' +
+      '&populate[hero_banner][populate][clouds][populate][image][fields][3]=height' +
       '&populate[cta_banner][populate][primary_cta]=*' +
       '&populate[cta_banner][populate][secondary_cta]=*' +
       '&populate[cta_banner][populate][bg_image][fields][0]=url' +

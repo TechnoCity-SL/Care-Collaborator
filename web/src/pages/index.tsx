@@ -34,33 +34,15 @@ const HomePage: NextPage<HomePageProps> = ({ pageData }) => {
 
       <PartnerLogosSection data={pageData.partner_logos_section} />
 
-      {(pageData.video_url || pageData.video_file) && (
-        <VideoSection
-          label={pageData.video_section_label}
-          heading={pageData.video_heading}
-          headingHighlight={pageData.video_heading_highlight}
-          subtext={pageData.video_subtext}
-          videoUrl={pageData.video_url}
-          videoFile={pageData.video_file}
-        />
+      {pageData.video_section && (pageData.video_section.video_url || pageData.video_section.video_file) && (
+        <VideoSection data={pageData.video_section} />
       )}
 
-      <FeaturesSection
-        label={pageData.features_label}
-        heading={pageData.features_heading}
-        headingHighlight={pageData.features_heading_highlight}
-        subtext={pageData.features_subtext}
-        features={pageData.features}
-      />
+      <FeaturesSection data={pageData.features_section} />
 
       {pageData.stats_banner && <StatsSection data={pageData.stats_banner} />}
 
-      <StepsSection
-        label={pageData.steps_label}
-        heading={pageData.steps_heading}
-        headingHighlight={pageData.steps_heading_highlight}
-        steps={pageData.steps}
-      />
+      <StepsSection data={pageData.steps_section} />
 
       {pageData.cta_banner && <CtaBanner data={pageData.cta_banner} />}
     </>

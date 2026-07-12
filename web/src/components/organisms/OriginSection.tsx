@@ -3,43 +3,63 @@ import ReactMarkdown from 'react-markdown';
 import { SectionLabel } from '@/components/atoms/SectionLabel';
 import { Heading } from '@/components/atoms/Heading';
 import { ChecklistRow } from '@/components/molecules/ChecklistRow';
-import type { AboutPageDTO } from '@/types/pages';
+import type { OriginSectionDTO } from '@/types/pages';
 
 interface OriginSectionProps {
-  data: AboutPageDTO;
+  data: OriginSectionDTO;
 }
 
 export function OriginSection({ data }: OriginSectionProps) {
   const {
-    origin_label,
-    origin_heading,
-    origin_body,
+    label: origin_label,
+    heading: origin_heading,
+    body: origin_body,
+    bg_image: origin_bg_image,
     problem_heading,
     problem_badge,
     problem_subtitle,
     problem_items,
   } = data;
+  const hasBgImage = !!origin_bg_image?.url;
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-[120px]" aria-labelledby="origin-heading">
-      <div className="mx-auto max-w-[1300px] px-6 lg:px-0">
+    <section
+      className={`relative overflow-hidden py-16 md:py-20 lg:py-[120px] ${hasBgImage ? '' : 'bg-white'}`}
+      aria-labelledby="origin-heading"
+    >
+      {hasBgImage && (
+        <>
+          <Image
+            src={origin_bg_image.url}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-blue-dark/40" aria-hidden="true" />
+        </>
+      )}
+
+      <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1fr_385px] lg:gap-18">
           <div>
-            {origin_label && <SectionLabel label={origin_label} className="mb-8" />}
+            {origin_label && (
+              <SectionLabel label={origin_label} theme={hasBgImage ? 'dark' : 'light'} className="mb-8" />
+            )}
             <Heading
               as="h2"
               id="origin-heading"
               text={origin_heading}
-              className="font-heading text-[clamp(28px,4vw,40px)] font-semibold leading-[1.15] text-text-dark"
+              className={`font-heading text-[clamp(28px,4vw,40px)] font-semibold leading-[1.15] ${hasBgImage ? 'text-white' : 'text-text-dark'}`}
             />
             <div className="mt-10 flex flex-col gap-4">
               <ReactMarkdown
                 components={{
                   p: ({ children }) => (
-                    <p className="font-body text-[15px] leading-[1.7] text-text-body">{children}</p>
+                    <p className={`font-body text-[15px] leading-[1.7] ${hasBgImage ? 'text-white/80' : 'text-text-body'}`}>{children}</p>
                   ),
                   strong: ({ children }) => (
-                    <strong className="font-semibold text-text-card">{children}</strong>
+                    <strong className={`font-semibold ${hasBgImage ? 'text-white' : 'text-text-card'}`}>{children}</strong>
                   ),
                 }}
               >

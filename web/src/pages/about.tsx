@@ -33,11 +33,11 @@ const AboutPage: NextPage<AboutPageProps> = ({ pageData }) => {
 
       {pageData.stats_banner && <StatsSection data={pageData.stats_banner} />}
 
-      <OriginSection data={pageData} />
+      <OriginSection data={pageData.origin_section} />
 
-      <MissionSection data={pageData} />
+      <MissionSection data={pageData.mission_section} />
 
-      <DifferenceSection data={pageData} />
+      <DifferenceSection data={pageData.diff_section} />
 
       {pageData.cta_banner && <CtaBanner data={pageData.cta_banner} />}
     </>

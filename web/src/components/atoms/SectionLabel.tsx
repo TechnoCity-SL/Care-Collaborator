@@ -4,9 +4,11 @@ interface SectionLabelProps {
   className?: string;
 }
 
-export function SectionLabel({ label, className = '' }: SectionLabelProps) {
+export function SectionLabel({ label, theme = 'light', className = '' }: SectionLabelProps) {
   return (
-    <p className={`font-sans text-[18px] font-bold uppercase tracking-[1.98px] text-blue-label ${className}`}>
+    <p
+      className={`font-sans text-[18px] font-bold uppercase tracking-[1.98px] ${theme === 'dark' ? 'text-white' : 'text-blue-label'} ${className}`}
+    >
       {label}
     </p>
   );

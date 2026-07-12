@@ -1,23 +1,14 @@
 import Image from 'next/image';
 import { SectionLabel } from '@/components/atoms/SectionLabel';
 import { FeatureCard } from '@/components/molecules/FeatureCard';
-import type { FeatureItemDTO } from '@/types/pages';
+import type { FeaturesSectionDTO } from '@/types/pages';
 
 interface FeaturesSectionProps {
-  label?: string;
-  heading: string;
-  headingHighlight?: string;
-  subtext?: string;
-  features: FeatureItemDTO[];
+  data: FeaturesSectionDTO;
 }
 
-export function FeaturesSection({
-  label,
-  heading,
-  headingHighlight,
-  subtext,
-  features,
-}: FeaturesSectionProps) {
+export function FeaturesSection({ data }: FeaturesSectionProps) {
+  const { label, heading, heading_highlight: headingHighlight, subtext, features } = data;
   const resolvedHighlight = (() => {
     if (headingHighlight && heading.includes(headingHighlight)) return headingHighlight;
     return heading;

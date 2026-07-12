@@ -146,25 +146,37 @@ export interface PartnerLogosSectionDTO {
 
 // ─── Page types ───────────────────────────────────────────────────────────────
 
+export interface VideoSectionDTO {
+  label?: string;
+  heading: string;
+  heading_highlight?: string;
+  subtext?: string;
+  video_url?: string;
+  video_file?: CloudinaryMediaDTO;
+}
+
+export interface FeaturesSectionDTO {
+  label?: string;
+  heading: string;
+  heading_highlight?: string;
+  subtext?: string;
+  features: FeatureItemDTO[];
+}
+
+export interface StepsSectionDTO {
+  label?: string;
+  heading: string;
+  heading_highlight?: string;
+  steps: StepItemDTO[];
+}
+
 export interface HomePageDTO {
   hero_banner?: HeroBannerDTO;
   partner_logos_section?: PartnerLogosSectionDTO;
-  video_section_label?: string;
-  video_heading: string;
-  video_heading_highlight?: string;
-  video_subtext?: string;
-  video_url?: string;
-  video_file?: CloudinaryMediaDTO;
-  features_label?: string;
-  features_heading: string;
-  features_heading_highlight?: string;
-  features_subtext?: string;
-  features: FeatureItemDTO[];
+  video_section?: VideoSectionDTO;
+  features_section: FeaturesSectionDTO;
   stats_banner?: StatsBannerDTO;
-  steps_label?: string;
-  steps_heading: string;
-  steps_heading_highlight?: string;
-  steps: StepItemDTO[];
+  steps_section: StepsSectionDTO;
   cta_banner?: CtaBannerDTO;
   seo: SeoDTO;
 }
@@ -175,30 +187,45 @@ export interface StepItemDTO {
   description?: string;
 }
 
-export interface AboutPageDTO {
-  hero_banner?: HeroBannerDTO;
-  stats_banner?: StatsBannerDTO;
-  origin_label?: string;
-  origin_heading: string;
-  origin_body: string;
+export interface OriginSectionDTO {
+  label?: string;
+  heading: string;
+  body: string;
+  bg_image?: CloudinaryMediaDTO;
   problem_heading?: string;
   problem_badge?: string;
   problem_subtitle?: string;
   problem_items: ChecklistItemDTO[];
-  mission_label?: string;
-  mission_quote: string;
-  mission_body?: string;
-  mission_values: FeatureItemDTO[];
-  diff_label?: string;
-  diff_heading: string;
-  diff_subtext?: string;
-  diff_features: FeatureItemDTO[];
+}
+
+export interface MissionSectionDTO {
+  label?: string;
+  quote: string;
+  body?: string;
+  values: FeatureItemDTO[];
+  bg_image?: CloudinaryMediaDTO;
+}
+
+export interface DiffSectionDTO {
+  label?: string;
+  heading: string;
+  subtext?: string;
+  features: FeatureItemDTO[];
   comparison_without: BadgeDTO[];
   comparison_with: BadgeDTO[];
-  diff_card_badge?: string;
-  diff_card_heading?: string;
+  card_badge?: string;
+  card_heading?: string;
   average_saving_heading?: string;
   average_saving_body?: string;
+  bg_image?: CloudinaryMediaDTO;
+}
+
+export interface AboutPageDTO {
+  hero_banner?: HeroBannerDTO;
+  stats_banner?: StatsBannerDTO;
+  origin_section: OriginSectionDTO;
+  mission_section: MissionSectionDTO;
+  diff_section: DiffSectionDTO;
   cta_banner?: CtaBannerDTO;
   seo: SeoDTO;
 }

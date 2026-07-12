@@ -57,6 +57,28 @@ export interface SharedCtaButton extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedDiffSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_diff_sections';
+  info: {
+    description: 'Differentiator features with a before/after comparison card';
+    displayName: 'Difference Section';
+    icon: 'puzzle';
+  };
+  attributes: {
+    average_saving_body: Schema.Attribute.Text;
+    average_saving_heading: Schema.Attribute.String;
+    bg_image: Schema.Attribute.Media<'images'>;
+    card_badge: Schema.Attribute.String;
+    card_heading: Schema.Attribute.String;
+    comparison_with: Schema.Attribute.Component<'shared.badge', true>;
+    comparison_without: Schema.Attribute.Component<'shared.badge', true>;
+    features: Schema.Attribute.Component<'shared.feature-item', true>;
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String;
+    subtext: Schema.Attribute.Text;
+  };
+}
+
 export interface SharedFeatureItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_feature_items';
   info: {
@@ -85,6 +107,22 @@ export interface SharedFeatureItem extends Struct.ComponentSchema {
       ]
     >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedFeaturesSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_features_sections';
+  info: {
+    description: 'Feature grid with heading and repeatable feature cards';
+    displayName: 'Features Section';
+    icon: 'grid';
+  };
+  attributes: {
+    features: Schema.Attribute.Component<'shared.feature-item', true>;
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    heading_highlight: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    subtext: Schema.Attribute.Text;
   };
 }
 
@@ -135,6 +173,41 @@ export interface SharedLink extends Struct.ComponentSchema {
     is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedMissionSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_mission_sections';
+  info: {
+    description: 'Mission quote, body copy, and repeatable value cards';
+    displayName: 'Mission Section';
+    icon: 'star';
+  };
+  attributes: {
+    bg_image: Schema.Attribute.Media<'images'>;
+    body: Schema.Attribute.Text;
+    label: Schema.Attribute.String;
+    quote: Schema.Attribute.Text & Schema.Attribute.Required;
+    values: Schema.Attribute.Component<'shared.feature-item', true>;
+  };
+}
+
+export interface SharedOriginSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_origin_sections';
+  info: {
+    description: 'Company origin story with a problem-solved checklist card';
+    displayName: 'Origin Section';
+    icon: 'book';
+  };
+  attributes: {
+    bg_image: Schema.Attribute.Media<'images'>;
+    body: Schema.Attribute.RichText;
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String;
+    problem_badge: Schema.Attribute.String;
+    problem_heading: Schema.Attribute.String;
+    problem_items: Schema.Attribute.Component<'shared.checklist-item', true>;
+    problem_subtitle: Schema.Attribute.String;
   };
 }
 
@@ -235,6 +308,38 @@ export interface SharedStepItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedStepsSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_steps_sections';
+  info: {
+    description: 'How-it-works section with heading and repeatable numbered steps';
+    displayName: 'Steps Section';
+    icon: 'bulletList';
+  };
+  attributes: {
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    heading_highlight: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    steps: Schema.Attribute.Component<'shared.step-item', true>;
+  };
+}
+
+export interface SharedVideoSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_video_sections';
+  info: {
+    description: 'Product demo video with heading and optional YouTube or self-hosted file';
+    displayName: 'Video Section';
+    icon: 'play';
+  };
+  attributes: {
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
+    heading_highlight: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    subtext: Schema.Attribute.Text;
+    video_file: Schema.Attribute.Media<'videos' | 'images'>;
+    video_url: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -242,16 +347,22 @@ declare module '@strapi/strapi' {
       'shared.checklist-item': SharedChecklistItem;
       'shared.cta-banner': SharedCtaBanner;
       'shared.cta-button': SharedCtaButton;
+      'shared.diff-section': SharedDiffSection;
       'shared.feature-item': SharedFeatureItem;
+      'shared.features-section': SharedFeaturesSection;
       'shared.footer-column': SharedFooterColumn;
       'shared.hero-banner': SharedHeroBanner;
       'shared.link': SharedLink;
+      'shared.mission-section': SharedMissionSection;
+      'shared.origin-section': SharedOriginSection;
       'shared.parallax-cloud': SharedParallaxCloud;
       'shared.partner-logos-section': SharedPartnerLogosSection;
       'shared.seo': SharedSeo;
       'shared.stat-item': SharedStatItem;
       'shared.stats-banner': SharedStatsBanner;
       'shared.step-item': SharedStepItem;
+      'shared.steps-section': SharedStepsSection;
+      'shared.video-section': SharedVideoSection;
     }
   }
 }

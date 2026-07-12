@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { SectionLabel } from '@/components/atoms/SectionLabel';
-import type { CloudinaryMediaDTO } from '@/types/pages';
+import type { VideoSectionDTO } from '@/types/pages';
 
 interface VideoSectionProps {
-  label?: string;
-  heading: string;
-  headingHighlight?: string;
-  subtext?: string;
-  videoUrl?: string;
-  videoFile?: CloudinaryMediaDTO;
+  data: VideoSectionDTO;
 }
 
 function getYouTubeEmbedId(url: string): string | null {
@@ -17,14 +12,15 @@ function getYouTubeEmbedId(url: string): string | null {
   return match ? match[1] : null;
 }
 
-export function VideoSection({
-  label,
-  heading,
-  headingHighlight,
-  subtext,
-  videoUrl,
-  videoFile,
-}: VideoSectionProps) {
+export function VideoSection({ data }: VideoSectionProps) {
+  const {
+    label,
+    heading,
+    heading_highlight: headingHighlight,
+    subtext,
+    video_url: videoUrl,
+    video_file: videoFile,
+  } = data;
   const [isPlaying, setIsPlaying] = useState(false);
 
   const canPlay = !!videoFile?.url || !!videoUrl;

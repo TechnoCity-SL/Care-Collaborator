@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_mission_sections",
+  "info": {
+    "displayName": "Mission Section",
+    "icon": "star",
+    "description": "Mission quote, body copy, and repeatable value cards"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "quote": {
+      "type": "text",
+      "required": true
+    },
+    "body": {
+      "type": "text"
+    },
+    "values": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-item"
+    },
+    "bg_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
