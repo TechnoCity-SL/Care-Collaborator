@@ -204,6 +204,7 @@ export interface MissionSectionDTO {
   body?: string;
   values: FeatureItemDTO[];
   bg_image?: CloudinaryMediaDTO;
+  clouds?: ParallaxCloudDTO[];
 }
 
 export interface DiffSectionDTO {

@@ -36,6 +36,10 @@ export async function fetchAboutPage(): Promise<AboutPageDTO> {
       '&populate[mission_section][populate][bg_image][fields][1]=alternativeText' +
       '&populate[mission_section][populate][bg_image][fields][2]=width' +
       '&populate[mission_section][populate][bg_image][fields][3]=height' +
+      '&populate[mission_section][populate][clouds][populate][image][fields][0]=url' +
+      '&populate[mission_section][populate][clouds][populate][image][fields][1]=alternativeText' +
+      '&populate[mission_section][populate][clouds][populate][image][fields][2]=width' +
+      '&populate[mission_section][populate][clouds][populate][image][fields][3]=height' +
       '&populate[diff_section][populate][features][fields][0]=title' +
       '&populate[diff_section][populate][features][fields][1]=description' +
       '&populate[diff_section][populate][features][fields][2]=icon_key' +

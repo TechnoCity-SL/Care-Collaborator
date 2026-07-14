@@ -15,7 +15,7 @@ export function StatsSection({ data }: StatsSectionProps) {
   return (
     <section
       className={`relative overflow-hidden py-16 md:py-20 lg:py-[120px] ${
-        hasBgImage ? '' : isPlain ? 'bg-white border-b-2 border-[#929292]' : 'bg-surface-video'
+        hasBgImage ? '' : isPlain ? 'bg-white border-b border-[#929292]' : 'bg-surface-video'
       }`}
       aria-labelledby={heading ? 'stats-heading' : undefined}
       aria-label={heading ? undefined : 'Key statistics'}

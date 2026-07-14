@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRef } from 'react';
 import { Badge } from '@/components/atoms/Badge';
 import { Heading } from '@/components/atoms/Heading';
 import { Button } from '@/components/atoms/Button';
@@ -30,9 +31,11 @@ export function HeroSection({ data }: HeroSectionProps) {
   const hasClouds = !!clouds?.length;
   const isLight = !hasBgImage;
   const trustBadgeTheme = isLight ? 'light' : badge_style === 'figma' ? 'trust' : 'dark';
+  const sectionRef = useRef<HTMLElement>(null);
 
   return (
     <section
+      ref={sectionRef}
       className={`relative overflow-hidden ${isLight ? 'bg-surface-video' : ''}`}
       aria-labelledby="hero-heading"
     >
@@ -47,7 +50,7 @@ export function HeroSection({ data }: HeroSectionProps) {
         />
       )}
 
-      {hasClouds && clouds.map((cloud) => <ParallaxCloud key={cloud.id} cloud={cloud} />)}
+      {hasClouds && clouds.map((cloud) => <ParallaxCloud key={cloud.id} cloud={cloud} containerRef={sectionRef} />)}
 
       <div className="relative z-10 mx-auto max-w-[1300px] px-6 py-20 lg:px-[70px] lg:py-[100px]">
         <div className={`flex gap-14 ${hasContentImage ? 'flex-col lg:flex-row lg:items-center' : 'flex-col'}`}>

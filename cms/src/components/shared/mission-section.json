@@ -27,6 +27,11 @@
       "multiple": false,
       "required": false,
       "allowedTypes": ["images"]
+    },
+    "clouds": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.parallax-cloud"
     }
   }
 }

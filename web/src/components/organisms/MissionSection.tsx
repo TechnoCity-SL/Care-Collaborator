@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import { useRef } from 'react';
 import { FeatureCard } from '@/components/molecules/FeatureCard';
+import { ParallaxCloud } from '@/components/molecules/ParallaxCloud';
 import type { MissionSectionDTO } from '@/types/pages';
 
 const QUOTE_HIGHLIGHT = 'the person in the room';
@@ -9,9 +11,18 @@ interface MissionSectionProps {
 }
 
 export function MissionSection({ data }: MissionSectionProps) {
-  const { label: mission_label, quote: mission_quote, body: mission_body, values: mission_values, bg_image: mission_bg_image } = data;
+  const {
+    label: mission_label,
+    quote: mission_quote,
+    body: mission_body,
+    values: mission_values,
+    bg_image: mission_bg_image,
+    clouds: mission_clouds,
+  } = data;
   const hasBgImage = !!mission_bg_image?.url;
+  const hasClouds = !!mission_clouds?.length;
   const isLight = !hasBgImage;
+  const sectionRef = useRef<HTMLElement>(null);
 
   const renderQuote = () => {
     if (!mission_quote.includes(QUOTE_HIGHLIGHT)) return mission_quote;
@@ -27,6 +38,7 @@ export function MissionSection({ data }: MissionSectionProps) {
 
   return (
     <section
+      ref={sectionRef}
       className={`relative overflow-hidden py-16 md:py-20 lg:py-[120px] ${isLight ? 'bg-surface-video' : ''}`}
       aria-labelledby="mission-heading"
     >
@@ -40,13 +52,10 @@ export function MissionSection({ data }: MissionSectionProps) {
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-blue-dark/40" aria-hidden="true" />
-
-          {/* Bird mascot */}
-          <div className="pointer-events-none absolute bottom-0 left-0 hidden select-none lg:block" aria-hidden="true">
-            <Image src="/images/steps-section/bird.png" alt="" width={180} height={180} className="object-contain" />
-          </div>
         </>
       )}
+
+      {hasClouds && mission_clouds.map((cloud) => <ParallaxCloud key={cloud.id} cloud={cloud} containerRef={sectionRef} />)}
 
       <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">

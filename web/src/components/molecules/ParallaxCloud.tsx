@@ -1,13 +1,15 @@
 import Image from 'next/image';
+import type { RefObject } from 'react';
 import { useParallaxOffset } from '@/hooks/useParallaxOffset';
 import type { ParallaxCloudDTO } from '@/types/pages';
 
 interface ParallaxCloudProps {
   cloud: ParallaxCloudDTO;
+  containerRef: RefObject<HTMLElement | null>;
 }
 
-export function ParallaxCloud({ cloud }: ParallaxCloudProps) {
-  const offset = useParallaxOffset(cloud.speed);
+export function ParallaxCloud({ cloud, containerRef }: ParallaxCloudProps) {
+  const offset = useParallaxOffset(containerRef, cloud.speed);
 
   return (
     <div
