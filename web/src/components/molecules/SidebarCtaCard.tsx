@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Button } from '@/components/atoms/Button';
 import type { CtaButtonDTO } from '@/types/pages';
 
@@ -11,14 +12,8 @@ interface SidebarCtaCardProps {
 export function SidebarCtaCard({ heading, body, primaryCta, secondaryCta }: SidebarCtaCardProps) {
   return (
     <div className="rounded-[20px] border border-border/70 bg-surface-video p-6 text-center">
-      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm">
-        <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 text-blue" aria-hidden="true">
-          <path
-            d="M12 3c-3.5 0-6 2.5-6 6 0 2.5 1.5 4 1.5 6l.5 3h8l.5-3c0-2 1.5-3.5 1.5-6 0-3.5-2.5-6-6-6z"
-            fill="currentColor"
-          />
-          <circle cx="9.5" cy="8.5" r="1" fill="white" />
-        </svg>
+      <div className="mx-auto mb-4 flex items-center justify-center">
+        <Image src="/images/insights/cta-bird.svg" alt="" width={120} height={108} />
       </div>
       <p className="mb-2 font-sans text-lg font-bold uppercase tracking-[0.08em] text-blue-dark">
         {heading}

@@ -17,7 +17,7 @@ export function PopularArticlesList({ articles }: PopularArticlesListProps) {
       <ul className="divide-y divide-border/70">
         {articles.map((article, index) => (
           <li key={article.id} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
-            <span className="font-heading text-2xl font-bold text-blue/30" aria-hidden="true">
+            <span className="font-stat-num text-[22px] font-normal leading-none text-blue/30" aria-hidden="true">
               {String(index + 1).padStart(2, '0')}
             </span>
             <Link href={`/insights/${article.slug}`} className="group flex-1">

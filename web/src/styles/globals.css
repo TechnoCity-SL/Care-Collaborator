@@ -57,6 +57,8 @@
   --font-body:      var(--font-poppins), 'Poppins', ui-sans-serif, sans-serif;
   --font-sans:      var(--font-inter), 'Inter', ui-sans-serif, sans-serif;
   --font-step-num:  var(--font-skranji), 'Skranji', cursive;
+  /* Impact isn't on Google Fonts — system font stack per Figma, not next/font-loaded */
+  --font-stat-num:  Impact, 'Arial Narrow Bold', sans-serif;
 }
 
 /* ─── Gradient utilities ─────────────────────────────────────────────────── */
