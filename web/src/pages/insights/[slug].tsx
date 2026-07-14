@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { generateNextSeo } from 'next-seo/pages';
 import { ArticleLayout } from '@/components/templates/ArticleLayout';
 import { ArticleBody } from '@/components/molecules/ArticleBody';
+import { ListenToArticle } from '@/components/molecules/ListenToArticle';
 import { Tag } from '@/components/atoms/Tag';
 import { fetchArticleBySlug, fetchAllArticleSlugs } from '@/repositories/insightsRepository';
 import { fetchGlobal } from '@/repositories/globalRepository';
@@ -55,6 +56,7 @@ const ArticlePage: NextPage<ArticlePageProps> = ({ article }) => {
             )}
             {article.read_time && <span>{article.read_time} min read</span>}
           </div>
+          <ListenToArticle body={article.body} className="mt-6" />
         </div>
       </div>
 
