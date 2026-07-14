@@ -17,20 +17,6 @@
       "repeatable": false,
       "component": "shared.hero-banner"
     },
-    "calculator_label": {
-      "type": "string"
-    },
-    "calculator_heading": {
-      "type": "string"
-    },
-    "calculator_subtext": {
-      "type": "text"
-    },
-    "cta_banner": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.cta-banner"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,

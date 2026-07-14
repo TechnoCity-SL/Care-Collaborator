@@ -276,10 +276,6 @@ export interface InsightsPageDTO {
 
 export interface RoiCalculatorPageDTO {
   hero_banner?: HeroBannerDTO;
-  calculator_label?: string;
-  calculator_heading?: string;
-  calculator_subtext?: string;
-  cta_banner?: CtaBannerDTO;
   seo: SeoDTO;
 }
 

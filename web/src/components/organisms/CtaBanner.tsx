@@ -11,6 +11,8 @@ export function CtaBanner({ data }: CtaBannerProps) {
   const hasBgImage = !!bg_image?.url;
   const isLight = !hasBgImage;
 
+  if (!primary_cta) return null;
+
   return (
     <section className="bg-surface-steps px-4 pb-16 pt-0 sm:px-6 lg:px-20 lg:pb-[120px]" aria-labelledby="cta-heading">
       <div

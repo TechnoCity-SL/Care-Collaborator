@@ -657,13 +657,9 @@ export interface ApiRoiCalculatorPageRoiCalculatorPage
     draftAndPublish: true;
   };
   attributes: {
-    calculator_heading: Schema.Attribute.String;
-    calculator_label: Schema.Attribute.String;
-    calculator_subtext: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    cta_banner: Schema.Attribute.Component<'shared.cta-banner', false>;
     hero_banner: Schema.Attribute.Component<'shared.hero-banner', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
