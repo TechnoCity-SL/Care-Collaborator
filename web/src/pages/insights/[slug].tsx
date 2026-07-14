@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { generateNextSeo } from 'next-seo/pages';
 import { ArticleLayout } from '@/components/templates/ArticleLayout';
+import { ArticleBody } from '@/components/molecules/ArticleBody';
 import { Tag } from '@/components/atoms/Tag';
 import { fetchArticleBySlug, fetchAllArticleSlugs } from '@/repositories/insightsRepository';
 import { fetchGlobal } from '@/repositories/globalRepository';
@@ -33,7 +34,7 @@ const ArticlePage: NextPage<ArticlePageProps> = ({ article }) => {
         })}
       </Head>
 
-      <div className="bg-navy py-14">
+      <div className="bg-gradient-to-br from-blue-dark to-navy py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="mb-4 flex items-center gap-3">
             <Tag category={article.category} />
@@ -58,7 +59,7 @@ const ArticlePage: NextPage<ArticlePageProps> = ({ article }) => {
       </div>
 
       {article.cover_image?.url && (
-        <div className="mx-auto -mt-8 max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl px-4 pt-10 sm:px-6 lg:px-8">
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl shadow-lg">
             <Image
               src={article.cover_image.url}
@@ -73,11 +74,7 @@ const ArticlePage: NextPage<ArticlePageProps> = ({ article }) => {
       )}
 
       <ArticleLayout>
-        {/* body is Strapi richtext (Markdown). Render as plain text for now;
-            swap for a markdown renderer (e.g. react-markdown) in Phase 3. */}
-        <div className="prose prose-gray max-w-none whitespace-pre-line text-gray-700">
-          {article.body}
-        </div>
+        <ArticleBody body={article.body} />
 
         <div className="mt-12 border-t border-border pt-8">
           <Link

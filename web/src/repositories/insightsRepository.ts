@@ -17,12 +17,6 @@ export async function fetchInsightsPage(): Promise<InsightsPageDTO> {
       '&populate[hero_banner][populate][clouds][populate][image][fields][3]=height' +
       '&populate[sidebar_cta_primary]=*' +
       '&populate[sidebar_cta_secondary]=*' +
-      '&populate[cta_banner][populate][primary_cta]=*' +
-      '&populate[cta_banner][populate][secondary_cta]=*' +
-      '&populate[cta_banner][populate][bg_image][fields][0]=url' +
-      '&populate[cta_banner][populate][bg_image][fields][1]=alternativeText' +
-      '&populate[cta_banner][populate][bg_image][fields][2]=width' +
-      '&populate[cta_banner][populate][bg_image][fields][3]=height' +
       '&populate[seo][fields][0]=title' +
       '&populate[seo][fields][1]=description' +
       '&populate[seo][fields][2]=no_index' +

@@ -271,7 +271,6 @@ export interface InsightsPageDTO {
   sidebar_cta_body?: string;
   sidebar_cta_primary?: CtaButtonDTO;
   sidebar_cta_secondary?: CtaButtonDTO;
-  cta_banner?: CtaBannerDTO;
   seo: SeoDTO;
 }
 

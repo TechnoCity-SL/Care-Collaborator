@@ -33,11 +33,6 @@
       "repeatable": false,
       "component": "shared.cta-button"
     },
-    "cta_banner": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.cta-banner"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,

@@ -120,7 +120,7 @@ export function InsightsExplorer({ pageData, articles, featuredArticle, popularA
             </div>
 
             {/* Sidebar */}
-            <aside aria-label="Sidebar" className="flex flex-col gap-8">
+            <aside aria-label="Sidebar" className="flex flex-col gap-8 self-start lg:sticky lg:top-24">
               {pageData.sidebar_cta_heading && (
                 <SidebarCtaCard
                   heading={pageData.sidebar_cta_heading}

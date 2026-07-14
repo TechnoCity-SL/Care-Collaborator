@@ -8,7 +8,6 @@ import {
   fetchFeaturedArticle,
   fetchPopularArticles,
 } from '@/repositories/insightsRepository';
-import { CtaBanner } from '@/components/organisms/CtaBanner';
 import { fetchGlobal } from '@/repositories/globalRepository';
 import { logger } from '@/utils/logger';
 import type { InsightsPageDTO, ArticleDTO, GlobalDTO } from '@/types/pages';
@@ -44,8 +43,6 @@ const InsightsIndexPage: NextPage<InsightsIndexPageProps> = ({
         featuredArticle={featuredArticle}
         popularArticles={popularArticles}
       />
-
-      {pageData.cta_banner && <CtaBanner data={pageData.cta_banner} />}
     </>
   );
 };
