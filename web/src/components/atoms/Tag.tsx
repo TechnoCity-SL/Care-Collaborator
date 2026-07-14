@@ -5,21 +5,25 @@ interface TagProps {
   className?: string;
 }
 
-const categoryConfig: Record<ArticleCategory, { label: string; className: string }> = {
-  technology:           { label: 'Technology',           className: 'bg-cat-tech/10 text-cat-tech' },
-  onboarding:           { label: 'Onboarding',           className: 'bg-cat-onboard/10 text-cat-onboard' },
-  fuel_and_costs:       { label: 'Fuel & Costs',         className: 'bg-cat-fuel/10 text-cat-fuel' },
-  e_signature:          { label: 'E-Signature',          className: 'bg-cat-esig/10 text-cat-esig' },
-  digital_transformation:{ label: 'Digital Transformation', className: 'bg-cat-transform/10 text-cat-transform' },
-  operations:           { label: 'Operations',           className: 'bg-cat-ops/10 text-cat-ops' },
-  digital:              { label: 'Digital',              className: 'bg-cat-digital/10 text-cat-digital' },
+export const categoryConfig: Record<ArticleCategory, { label: string; bgClass: string; textClass: string }> = {
+  technology:             { label: 'Technology',             bgClass: 'bg-cat-tech-bg',      textClass: 'text-cat-tech-text' },
+  onboarding:             { label: 'Onboarding',              bgClass: 'bg-cat-onboard-bg',   textClass: 'text-cat-onboard-text' },
+  fuel_and_costs:         { label: 'Fuel & costs',            bgClass: 'bg-cat-fuel-bg',      textClass: 'text-cat-fuel-text' },
+  e_signature:            { label: 'E-signature',             bgClass: 'bg-cat-esig-bg',      textClass: 'text-cat-esig-text' },
+  digital_transformation: { label: 'Digital transformation',  bgClass: 'bg-cat-transform-bg', textClass: 'text-cat-transform-text' },
+  operations:             { label: 'Operations',              bgClass: 'bg-cat-ops-bg',       textClass: 'text-cat-ops-text' },
+  digital:                { label: 'Digital',                 bgClass: 'bg-cat-digital-bg',   textClass: 'text-cat-digital-text' },
 };
 
+export function getCategoryLabel(category: ArticleCategory): string {
+  return categoryConfig[category].label;
+}
+
 export function Tag({ category, className = '' }: TagProps) {
-  const { label, className: colorClass } = categoryConfig[category];
+  const { label, bgClass, textClass } = categoryConfig[category];
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ${colorClass} ${className}`}
+      className={`inline-flex items-center rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wide ${bgClass} ${textClass} ${className}`}
     >
       {label}
     </span>

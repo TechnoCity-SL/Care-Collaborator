@@ -159,6 +159,7 @@ export interface SharedHeroBanner extends Struct.ComponentSchema {
     subtitle: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     title_highlight: Schema.Attribute.String;
+    use_gradient: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 

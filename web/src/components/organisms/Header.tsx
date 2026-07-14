@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Button } from '@/components/atoms/Button';
 import type { GlobalDTO } from '@/types/pages';
 
@@ -11,6 +12,7 @@ export function Header({ globalData }: HeaderProps) {
   const { nav_links, nav_cta } = globalData;
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -52,17 +54,25 @@ export function Header({ globalData }: HeaderProps) {
 
         {/* Desktop nav links */}
         <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:flex xl:gap-8">
-          {nav_links.map((link) => (
-            <Link
-              key={link.id}
-              href={link.url}
-              target={link.is_external ? '_blank' : undefined}
-              rel={link.is_external ? 'noopener noreferrer' : undefined}
-              className="font-sans text-[14px] font-normal text-text-nav transition-colors hover:text-blue focus-visible:text-blue focus-visible:outline-none"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {nav_links.map((link) => {
+            const isActive = !link.is_external && router.pathname === link.url;
+            return (
+              <Link
+                key={link.id}
+                href={link.url}
+                target={link.is_external ? '_blank' : undefined}
+                rel={link.is_external ? 'noopener noreferrer' : undefined}
+                aria-current={isActive ? 'page' : undefined}
+                className={
+                  isActive
+                    ? 'border-b border-blue bg-btn-blue bg-clip-text font-sans text-[14px] font-medium text-transparent'
+                    : 'font-sans text-[14px] font-normal text-text-nav transition-colors hover:text-blue focus-visible:text-blue focus-visible:outline-none'
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Desktop CTA */}

@@ -119,6 +119,7 @@ export interface HeroBannerDTO {
   badges?: BadgeDTO[];
   badge_style?: TrustBadgeStyle;
   clouds?: ParallaxCloudDTO[];
+  use_gradient?: boolean;
 }
 
 export type StatsBannerTheme = 'gradient' | 'plain';
@@ -255,7 +256,9 @@ export interface ArticleDTO {
   cover_image?: CloudinaryMediaDTO;
   category: ArticleCategory;
   author?: string;
+  author_role?: string;
   read_time?: number;
+  read_count?: number;
   featured: boolean;
   popular: boolean;
   publishedAt: string;

@@ -52,6 +52,11 @@
       "enum": ["current", "figma"],
       "default": "current"
     },
+    "use_gradient": {
+      "type": "boolean",
+      "default": false,
+      "description": "Render the deep blue gradient background (no bg_image needed) instead of the light theme"
+    },
     "clouds": {
       "type": "component",
       "repeatable": true,

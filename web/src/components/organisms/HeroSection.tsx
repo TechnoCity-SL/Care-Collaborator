@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useRef } from 'react';
+import type { ReactNode } from 'react';
 import { Badge } from '@/components/atoms/Badge';
 import { Heading } from '@/components/atoms/Heading';
 import { Button } from '@/components/atoms/Button';
@@ -8,9 +9,10 @@ import type { HeroBannerDTO } from '@/types/pages';
 
 interface HeroSectionProps {
   data: HeroBannerDTO;
+  children?: ReactNode;
 }
 
-export function HeroSection({ data }: HeroSectionProps) {
+export function HeroSection({ data, children }: HeroSectionProps) {
   const {
     badge,
     title,
@@ -23,20 +25,21 @@ export function HeroSection({ data }: HeroSectionProps) {
     badges,
     badge_style,
     clouds,
+    use_gradient,
   } = data;
 
   const hasContentImage = !!image?.url;
   const hasBgImage = !!bg_image?.url;
   const hasBadgeChips = !!badges?.length;
   const hasClouds = !!clouds?.length;
-  const isLight = !hasBgImage;
+  const isLight = !hasBgImage && !use_gradient;
   const trustBadgeTheme = isLight ? 'light' : badge_style === 'figma' ? 'trust' : 'dark';
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
     <section
       ref={sectionRef}
-      className={`relative overflow-hidden ${isLight ? 'bg-surface-video' : ''}`}
+      className={`relative overflow-hidden ${isLight ? 'bg-surface-video' : ''} ${!hasBgImage && use_gradient ? 'bg-insights-hero-gradient' : ''}`}
       aria-labelledby="hero-heading"
     >
       {hasBgImage && (
@@ -87,6 +90,10 @@ export function HeroSection({ data }: HeroSectionProps) {
                 )}
               </div>
             </div>
+
+            {children && (
+              <div className={`w-full ${hasContentImage ? '' : 'flex justify-center'}`}>{children}</div>
+            )}
 
             {/* Bottom group: CTA buttons + optional trust badges */}
             <div className={`flex flex-col gap-6 ${hasContentImage ? 'items-start' : 'items-center'}`}>

@@ -31,12 +31,18 @@ export async function fetchInsightsPage(): Promise<InsightsPageDTO> {
   return response.data;
 }
 
+const COVER_IMAGE_POPULATE =
+  '&populate[cover_image][fields][0]=url' +
+  '&populate[cover_image][fields][1]=alternativeText' +
+  '&populate[cover_image][fields][2]=width' +
+  '&populate[cover_image][fields][3]=height';
+
 export async function fetchArticles(params?: {
   page?: number;
   pageSize?: number;
 }): Promise<{ articles: ArticleDTO[]; total: number }> {
   const page = params?.page ?? 1;
-  const pageSize = params?.pageSize ?? 9;
+  const pageSize = params?.pageSize ?? 60;
   const response = await strapiGet<{
     data: ArticleDTO[];
     meta: { pagination: { total: number } };
@@ -46,7 +52,8 @@ export async function fetchArticles(params?: {
       `&pagination[page]=${page}` +
       `&pagination[pageSize]=${pageSize}` +
       '&populate[seo][fields][0]=title' +
-      '&populate[seo][fields][1]=description'
+      '&populate[seo][fields][1]=description' +
+      COVER_IMAGE_POPULATE
   );
   return {
     articles: response.data,
@@ -56,14 +63,14 @@ export async function fetchArticles(params?: {
 
 export async function fetchFeaturedArticle(): Promise<ArticleDTO | null> {
   const response = await strapiGet<{ data: ArticleDTO[] }>(
-    '/articles?filters[featured][$eq]=true&pagination[pageSize]=1'
+    '/articles?filters[featured][$eq]=true&pagination[pageSize]=1' + COVER_IMAGE_POPULATE
   );
   return response.data[0] ?? null;
 }
 
 export async function fetchPopularArticles(): Promise<ArticleDTO[]> {
   const response = await strapiGet<{ data: ArticleDTO[] }>(
-    '/articles?filters[popular][$eq]=true&pagination[pageSize]=4&sort=publishedAt:desc'
+    '/articles?filters[popular][$eq]=true&pagination[pageSize]=4&sort=publishedAt:desc' + COVER_IMAGE_POPULATE
   );
   return response.data;
 }
@@ -74,7 +81,8 @@ export async function fetchArticleBySlug(slug: string): Promise<ArticleDTO | nul
       '&populate[seo][fields][0]=title' +
       '&populate[seo][fields][1]=description' +
       '&populate[seo][fields][2]=no_index' +
-      '&populate[seo][fields][3]=canonicalURL'
+      '&populate[seo][fields][3]=canonicalURL' +
+      COVER_IMAGE_POPULATE
   );
   return response.data[0] ?? null;
 }

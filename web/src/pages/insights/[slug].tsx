@@ -1,5 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { generateNextSeo } from 'next-seo/pages';
 import { ArticleLayout } from '@/components/templates/ArticleLayout';
@@ -45,11 +46,31 @@ const ArticlePage: NextPage<ArticlePageProps> = ({ article }) => {
             <p className="mt-4 text-lg text-white/70">{article.excerpt}</p>
           )}
           <div className="mt-6 flex items-center gap-4 text-sm text-white/50">
-            {article.author && <span>By {article.author}</span>}
+            {article.author && (
+              <span>
+                By {article.author}
+                {article.author_role && `, ${article.author_role}`}
+              </span>
+            )}
             {article.read_time && <span>{article.read_time} min read</span>}
           </div>
         </div>
       </div>
+
+      {article.cover_image?.url && (
+        <div className="mx-auto -mt-8 max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl shadow-lg">
+            <Image
+              src={article.cover_image.url}
+              alt={article.cover_image.alternativeText ?? article.title}
+              fill
+              sizes="(min-width: 1024px) 768px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      )}
 
       <ArticleLayout>
         {/* body is Strapi richtext (Markdown). Render as plain text for now;

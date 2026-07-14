@@ -50,7 +50,13 @@
     "author": {
       "type": "string"
     },
+    "author_role": {
+      "type": "string"
+    },
     "read_time": {
+      "type": "integer"
+    },
+    "read_count": {
       "type": "integer"
     },
     "featured": {

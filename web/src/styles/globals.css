@@ -36,14 +36,21 @@
   --color-border:         #e2e8f0;
   --color-muted:          #6b7280;
 
-  /* Article category badge colours */
-  --color-cat-tech:       #2563eb;
-  --color-cat-onboard:    #0891b2;
-  --color-cat-fuel:       #16a34a;
-  --color-cat-esig:       #7c3aed;
-  --color-cat-digital:    #9333ea;
-  --color-cat-ops:        #ea580c;
-  --color-cat-transform:  #0284c7;
+  /* Article category colours — pastel background + matching accent text (from Figma) */
+  --color-cat-tech-bg:        #e8f2ff;
+  --color-cat-tech-text:      #104fae;
+  --color-cat-onboard-bg:     #ffd8d8;
+  --color-cat-onboard-text:   #961010;
+  --color-cat-fuel-bg:        #fff4c8;
+  --color-cat-fuel-text:      #968610;
+  --color-cat-esig-bg:        #ffe6d4;
+  --color-cat-esig-text:      #965e10;
+  --color-cat-digital-bg:     #f6e8ff;
+  --color-cat-digital-text:   #7926ae;
+  --color-cat-ops-bg:         #d7ffd9;
+  --color-cat-ops-text:       #269610;
+  --color-cat-transform-bg:   #dbeafe;
+  --color-cat-transform-text: #1d4ed8;
 
   /* ─── Font families ─────────────────────────────────────────────────────── */
   --font-heading:   var(--font-instrument), 'Instrument Sans', ui-sans-serif, sans-serif;
@@ -100,6 +107,34 @@
     145.5deg,
     rgb(0, 116, 255) 55.2%,
     rgb(116, 188, 255) 111.6%
+  );
+}
+
+@utility bg-search-btn-gradient {
+  /* Search bar submit button — solid-reading blue chip against the translucent bar */
+  background-image: linear-gradient(
+    117deg,
+    rgba(0, 116, 255, 0.5) 55.24%,
+    rgba(116, 188, 255, 0.5) 111.59%
+  );
+}
+
+@utility bg-insights-hero-gradient {
+  /* Insights hero background — deep navy-to-blue diagonal under the standard blue-to-white wash */
+  background-image:
+    linear-gradient(166.5deg, rgb(96, 146, 255) 29.278%, rgb(255, 255, 255) 113.94%),
+    linear-gradient(-29.65deg, rgb(15, 44, 88) 4.25%, rgb(0, 116, 255) 95.8%);
+}
+
+@utility bg-featured-card-gradient {
+  /* Featured article card image band — matches Figma radial blue gradient */
+  background-image: radial-gradient(
+    ellipse 140% 160% at 35% 90%,
+    #0074ff 0%,
+    #3096ff 35%,
+    #60a3ff 55%,
+    #90beff 75%,
+    #c0d2ff 100%
   );
 }
 
