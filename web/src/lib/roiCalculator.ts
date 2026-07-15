@@ -59,9 +59,10 @@ export function calculateRoi(inputs: RoiCalculatorInputs): RoiCalculatorResult {
     perPackageMonthlyProfit,
     paybackMultiple: perPackageMonthlyUplift / careCollaboratorCostPerPackage,
     annualisedUplift: monthlyProfit * 12,
-    serviceDeliveryCostBefore: packageTier.monthlyPrice * utilisationDecimal * packageCount,
-    serviceDeliveryCostAfter: packageTier.monthlyPrice * (utilisationDecimal + upliftDecimal) * packageCount,
+    serviceDeliveryCostBefore: packageTier.monthlyPrice * utilisationDecimal,
+    serviceDeliveryCostAfter: packageTier.monthlyPrice * (utilisationDecimal + upliftDecimal),
     careCollaboratorCostPerPackage,
+    careCollaboratorCostAcrossPortfolio: careCollaboratorCostPerPackage * packageCount * 3,
   };
 }
 

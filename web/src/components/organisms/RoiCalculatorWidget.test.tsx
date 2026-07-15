@@ -32,11 +32,11 @@ describe('RoiCalculatorWidget', () => {
     expect(screen.getByText('1,000')).toBeInTheDocument();
   });
 
-  it('renders a demo booking link in both panels', () => {
+  it('renders a single demo booking link in the result panel', () => {
     render(<RoiCalculatorWidget />);
 
     const demoLinks = screen.getAllByRole('link', { name: 'Book a 30-minute demo' });
-    expect(demoLinks).toHaveLength(2);
-    demoLinks.forEach((link) => expect(link).toHaveAttribute('href', '/contact'));
+    expect(demoLinks).toHaveLength(1);
+    expect(demoLinks[0]).toHaveAttribute('href', '/contact');
   });
 });

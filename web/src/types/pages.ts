@@ -287,6 +287,12 @@ export interface ContactPageDTO {
   seo: SeoDTO;
 }
 
+export interface PrivacyPageDTO {
+  hero_banner?: HeroBannerDTO;
+  body: string;
+  seo: SeoDTO;
+}
+
 export interface ServiceDTO {
   id: number;
   title: string;

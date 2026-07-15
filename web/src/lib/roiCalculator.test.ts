@@ -23,12 +23,12 @@ describe('calculateRoi', () => {
     );
   });
 
-  it('returns all zeros for zero packages', () => {
+  it('returns zero portfolio-wide figures for zero packages', () => {
     const result = calculateRoi({ ...DEFAULT_INPUTS, packageCount: 0 });
 
     expect(result.monthlyProfit).toBe(0);
     expect(result.annualisedUplift).toBe(0);
-    expect(result.serviceDeliveryCostBefore).toBe(0);
+    expect(result.careCollaboratorCostAcrossPortfolio).toBe(0);
   });
 
   it('increases monthly profit when a higher uplift option is selected', () => {
@@ -54,11 +54,23 @@ describe('calculateRoi', () => {
     expect(expensive.paybackMultiple).toBeLessThan(cheap.paybackMultiple);
   });
 
-  it('scales monthly profit linearly with package count', () => {
+  it('scales monthly profit and portfolio-wide cost linearly with package count', () => {
     const base = calculateRoi({ ...DEFAULT_INPUTS, packageCount: 100 });
     const doubled = calculateRoi({ ...DEFAULT_INPUTS, packageCount: 200 });
 
     expect(doubled.monthlyProfit).toBeCloseTo(base.monthlyProfit * 2, 5);
+    expect(doubled.careCollaboratorCostAcrossPortfolio).toBeCloseTo(
+      base.careCollaboratorCostAcrossPortfolio * 2,
+      5
+    );
+  });
+
+  it('keeps service delivery cost figures per-package regardless of package count', () => {
+    const fewPackages = calculateRoi({ ...DEFAULT_INPUTS, packageCount: 10 });
+    const manyPackages = calculateRoi({ ...DEFAULT_INPUTS, packageCount: 1000 });
+
+    expect(fewPackages.serviceDeliveryCostBefore).toBeCloseTo(manyPackages.serviceDeliveryCostBefore, 5);
+    expect(fewPackages.serviceDeliveryCostAfter).toBeCloseTo(manyPackages.serviceDeliveryCostAfter, 5);
   });
 
   it('clamps out-of-range utilisation to the 0–100 bounds', () => {

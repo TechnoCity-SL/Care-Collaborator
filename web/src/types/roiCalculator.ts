@@ -37,4 +37,5 @@ export interface RoiCalculatorResult {
   serviceDeliveryCostBefore: number;
   serviceDeliveryCostAfter: number;
   careCollaboratorCostPerPackage: number;
+  careCollaboratorCostAcrossPortfolio: number;
 }
