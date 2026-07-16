@@ -44,10 +44,10 @@ const AboutPage: NextPage<AboutPageProps> = ({ pageData }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
+export const getStaticProps: GetStaticProps<AboutPageProps> = async (context) => {
   try {
     const [pageData, globalData] = await Promise.all([
-      fetchAboutPage(),
+      fetchAboutPage(context.draftMode),
       fetchGlobal(),
     ]);
     return {

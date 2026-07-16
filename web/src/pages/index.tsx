@@ -49,10 +49,10 @@ const HomePage: NextPage<HomePageProps> = ({ pageData }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+export const getStaticProps: GetStaticProps<HomePageProps> = async (context) => {
   try {
     const [pageData, globalData] = await Promise.all([
-      fetchHomePage(),
+      fetchHomePage(context.draftMode),
       fetchGlobal(),
     ]);
     return {

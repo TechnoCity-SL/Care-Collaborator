@@ -47,10 +47,10 @@ const InsightsIndexPage: NextPage<InsightsIndexPageProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps<InsightsIndexPageProps> = async () => {
+export const getStaticProps: GetStaticProps<InsightsIndexPageProps> = async (context) => {
   try {
     const [pageData, globalData, featuredArticle, { articles }, popularArticles] = await Promise.all([
-      fetchInsightsPage(),
+      fetchInsightsPage(context.draftMode),
       fetchGlobal(),
       fetchFeaturedArticle(),
       fetchArticles({ pageSize: 60 }),

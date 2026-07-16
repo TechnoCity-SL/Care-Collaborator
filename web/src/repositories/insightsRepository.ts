@@ -1,7 +1,7 @@
 import { strapiGet } from '@/lib/strapi';
 import type { InsightsPageDTO, ArticleDTO } from '@/types/pages';
 
-export async function fetchInsightsPage(): Promise<InsightsPageDTO> {
+export async function fetchInsightsPage(draft = false): Promise<InsightsPageDTO> {
   const response = await strapiGet<{ data: InsightsPageDTO }>(
     '/insights-page' +
       '?populate[hero_banner][populate][primary_cta]=*' +
@@ -20,7 +20,8 @@ export async function fetchInsightsPage(): Promise<InsightsPageDTO> {
       '&populate[seo][fields][0]=title' +
       '&populate[seo][fields][1]=description' +
       '&populate[seo][fields][2]=no_index' +
-      '&populate[seo][fields][3]=canonicalURL'
+      '&populate[seo][fields][3]=canonicalURL',
+    { draft }
   );
   return response.data;
 }
@@ -69,14 +70,15 @@ export async function fetchPopularArticles(): Promise<ArticleDTO[]> {
   return response.data;
 }
 
-export async function fetchArticleBySlug(slug: string): Promise<ArticleDTO | null> {
+export async function fetchArticleBySlug(slug: string, draft = false): Promise<ArticleDTO | null> {
   const response = await strapiGet<{ data: ArticleDTO[] }>(
     `/articles?filters[slug][$eq]=${encodeURIComponent(slug)}` +
       '&populate[seo][fields][0]=title' +
       '&populate[seo][fields][1]=description' +
       '&populate[seo][fields][2]=no_index' +
       '&populate[seo][fields][3]=canonicalURL' +
-      COVER_IMAGE_POPULATE
+      COVER_IMAGE_POPULATE,
+    { draft }
   );
   return response.data[0] ?? null;
 }

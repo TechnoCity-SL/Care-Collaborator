@@ -1,7 +1,7 @@
 import { strapiGet } from '@/lib/strapi';
 import type { HomePageDTO } from '@/types/pages';
 
-export async function fetchHomePage(): Promise<HomePageDTO> {
+export async function fetchHomePage(draft = false): Promise<HomePageDTO> {
   const response = await strapiGet<{ data: HomePageDTO }>(
     '/home-page' +
       '?populate[partner_logos_section][populate][logos][fields][0]=url' +
@@ -47,7 +47,8 @@ export async function fetchHomePage(): Promise<HomePageDTO> {
       '&populate[seo][fields][0]=title' +
       '&populate[seo][fields][1]=description' +
       '&populate[seo][fields][2]=no_index' +
-      '&populate[seo][fields][3]=canonicalURL'
+      '&populate[seo][fields][3]=canonicalURL',
+    { draft }
   );
   return response.data;
 }

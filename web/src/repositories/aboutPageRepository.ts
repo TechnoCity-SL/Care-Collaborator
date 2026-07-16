@@ -1,7 +1,7 @@
 import { strapiGet } from '@/lib/strapi';
 import type { AboutPageDTO } from '@/types/pages';
 
-export async function fetchAboutPage(): Promise<AboutPageDTO> {
+export async function fetchAboutPage(draft = false): Promise<AboutPageDTO> {
   const response = await strapiGet<{ data: AboutPageDTO }>(
     '/about-page' +
       '?populate[hero_banner][populate][primary_cta]=*' +
@@ -58,7 +58,8 @@ export async function fetchAboutPage(): Promise<AboutPageDTO> {
       '&populate[seo][fields][0]=title' +
       '&populate[seo][fields][1]=description' +
       '&populate[seo][fields][2]=no_index' +
-      '&populate[seo][fields][3]=canonicalURL'
+      '&populate[seo][fields][3]=canonicalURL',
+    { draft }
   );
   return response.data;
 }

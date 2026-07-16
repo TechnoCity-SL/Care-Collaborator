@@ -35,10 +35,10 @@ const PrivacyPage: NextPage<PrivacyPageProps> = ({ pageData }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<PrivacyPageProps> = async () => {
+export const getStaticProps: GetStaticProps<PrivacyPageProps> = async (context) => {
   try {
     const [pageData, globalData] = await Promise.all([
-      fetchPrivacyPage(),
+      fetchPrivacyPage(context.draftMode),
       fetchGlobal(),
     ]);
     return {

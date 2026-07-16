@@ -1,6 +1,6 @@
 import type { Core } from '@strapi/strapi';
 
-const config: Core.Config.Middlewares = [
+const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Middlewares => [
   'strapi::logger',
   'strapi::errors',
   {
@@ -23,6 +23,7 @@ const config: Core.Config.Middlewares = [
             'blob:',
             'res.cloudinary.com',
           ],
+          'frame-src': ["'self'", env('FRONTEND_URL')],
           upgradeInsecureRequests: null,
         },
       },

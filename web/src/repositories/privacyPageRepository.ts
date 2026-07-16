@@ -1,7 +1,7 @@
 import { strapiGet } from '@/lib/strapi';
 import type { PrivacyPageDTO } from '@/types/pages';
 
-export async function fetchPrivacyPage(): Promise<PrivacyPageDTO> {
+export async function fetchPrivacyPage(draft = false): Promise<PrivacyPageDTO> {
   const response = await strapiGet<{ data: PrivacyPageDTO }>(
     '/privacy-page' +
       '?populate[hero_banner][populate][primary_cta]=*' +
@@ -18,7 +18,8 @@ export async function fetchPrivacyPage(): Promise<PrivacyPageDTO> {
       '&populate[seo][fields][0]=title' +
       '&populate[seo][fields][1]=description' +
       '&populate[seo][fields][2]=no_index' +
-      '&populate[seo][fields][3]=canonicalURL'
+      '&populate[seo][fields][3]=canonicalURL',
+    { draft }
   );
   return response.data;
 }

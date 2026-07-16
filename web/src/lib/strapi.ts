@@ -1,4 +1,4 @@
-async function strapiGet<T>(endpoint: string): Promise<T> {
+async function strapiGet<T>(endpoint: string, options?: { draft?: boolean }): Promise<T> {
   const apiUrl = process.env.STRAPI_API_URL;
   const apiToken = process.env.STRAPI_API_TOKEN;
 
@@ -8,7 +8,12 @@ async function strapiGet<T>(endpoint: string): Promise<T> {
     );
   }
 
-  const response = await fetch(`${apiUrl}/api${endpoint}`, {
+  const separator = endpoint.includes('?') ? '&' : '?';
+  const url = options?.draft
+    ? `${apiUrl}/api${endpoint}${separator}status=draft`
+    : `${apiUrl}/api${endpoint}`;
+
+  const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${apiToken}`,
       'Content-Type': 'application/json',

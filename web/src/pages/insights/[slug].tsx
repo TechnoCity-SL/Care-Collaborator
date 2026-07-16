@@ -104,13 +104,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({ params, draftMode }) => {
   const slug = params?.slug;
   if (typeof slug !== 'string') return { notFound: true };
 
   try {
     const [article, globalData] = await Promise.all([
-      fetchArticleBySlug(slug),
+      fetchArticleBySlug(slug, draftMode),
       fetchGlobal(),
     ]);
     if (!article) return { notFound: true };

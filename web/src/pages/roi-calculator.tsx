@@ -36,10 +36,10 @@ const RoiCalculatorPage: NextPage<RoiCalculatorPageProps> = ({ pageData }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<RoiCalculatorPageProps> = async () => {
+export const getStaticProps: GetStaticProps<RoiCalculatorPageProps> = async (context) => {
   try {
     const [pageData, globalData] = await Promise.all([
-      fetchRoiCalculatorPage(),
+      fetchRoiCalculatorPage(context.draftMode),
       fetchGlobal(),
     ]);
     return {
