@@ -27,7 +27,7 @@ export function CtaBanner({ data }: CtaBannerProps) {
               sizes="100vw"
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 rounded-[32px] bg-blue-dark/40" aria-hidden="true" />
+            {/* <div className="absolute inset-0 rounded-[32px] bg-blue-dark/40" aria-hidden="true" /> */}
           </>
         )}
 
