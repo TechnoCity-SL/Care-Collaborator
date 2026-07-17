@@ -24,7 +24,7 @@ export function ComparisonCard({
         className="pointer-events-none absolute -top-12 -left-10 hidden select-none lg:block"
         aria-hidden="true"
       >
-        <Image src="/images/comparison-card/birdSide.png" alt="" width={102} height={102} />
+        <Image src="/images/comparison-card/birdSide.svg" alt="" width={102} height={102} />
       </div>
 
       {badge && (
