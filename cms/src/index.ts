@@ -537,15 +537,36 @@ async function revalidateFrontend(strapi: Core.Strapi, paths: string[]) {
   }
 }
 
+const REVALIDATE_PATHS_BY_UID: Record<string, string[]> = {
+  'api::home-page.home-page': ['/'],
+  'api::about-page.about-page': ['/about'],
+  'api::insights-page.insights-page': ['/insights'],
+  'api::roi-calculator-page.roi-calculator-page': ['/roi-calculator'],
+};
+
 export default {
   register({ strapi }: { strapi: Core.Strapi }) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (strapi.documents as any).use(async (ctx: any, next: () => Promise<any>) => {
       const result = await next();
-      if (ctx.uid === 'api::home-page.home-page' && ctx.action === 'publish') {
+      if (ctx.action !== 'publish') {
+        return result;
+      }
+
+      let paths = REVALIDATE_PATHS_BY_UID[ctx.uid];
+
+      if (ctx.uid === 'api::article.article') {
+        paths = ['/insights'];
+        const slug = result?.slug ?? ctx.params?.data?.slug;
+        if (slug) {
+          paths = [...paths, `/insights/${slug}`];
+        }
+      }
+
+      if (paths) {
         // Defer past current request cycle so Strapi's entity cache flushes first
         setImmediate(() => {
-          revalidateFrontend(strapi, ['/']).catch((err) => {
+          revalidateFrontend(strapi, paths).catch((err) => {
             strapi.log.error(`[isr] Deferred revalidation error: ${err}`);
           });
         });
