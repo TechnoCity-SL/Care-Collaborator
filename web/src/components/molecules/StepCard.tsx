@@ -1,16 +1,35 @@
+import Image from 'next/image';
 import type { StepItemDTO } from '@/types/pages';
+
+const BIRD_ASSET = '/images/steps-section/StepSectionBird.svg';
 
 interface StepCardProps {
   step: StepItemDTO;
   index: number;
   isLast?: boolean;
+  isFirst?: boolean;
 }
 
-export function StepCard({ step, index, isLast = false }: StepCardProps) {
+export function StepCard({ step, index, isLast = false, isFirst = false }: StepCardProps) {
   const stepNumber = String(index + 1).padStart(2, '0');
 
   return (
-    <div className="flex flex-col gap-6 bg-surface-steps lg:pr-8 lg:last:pr-0">
+    <div className="relative flex flex-col gap-6 bg-surface-steps lg:pr-8 lg:last:pr-0">
+      {isFirst && (
+        <div
+          className="pointer-events-none absolute bottom-[10%] -left-80 hidden select-none lg:block"
+          aria-hidden="true"
+        >
+          <Image
+            src={BIRD_ASSET}
+            alt=""
+            width={200}
+            height={200}
+            className="h-auto w-[112px] object-contain xl:w-[260px] 2xl:w-[260px]"
+            onError={() => {}}
+          />
+        </div>
+      )}
       <div className="flex items-center gap-4">
         <span className="font-step-num text-[44px] leading-none text-step-num shrink-0">
           {stepNumber}

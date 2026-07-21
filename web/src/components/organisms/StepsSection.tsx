@@ -3,8 +3,6 @@ import { SectionLabel } from '@/components/atoms/SectionLabel';
 import { StepCard } from '@/components/molecules/StepCard';
 import type { StepsSectionDTO } from '@/types/pages';
 
-const BIRD_ASSET = '/images/steps-section/bird.png';
-
 interface StepsSectionProps {
   data: StepsSectionDTO;
 }
@@ -44,21 +42,6 @@ export function StepsSection({ data }: StepsSectionProps) {
 
   return (
     <section className="relative overflow-hidden bg-surface-steps py-16 md:py-20 lg:py-[120px]" aria-labelledby="steps-heading">
-      {/* Bird mascot — left edge, vertically centred on the steps row */}
-      <div
-        className="pointer-events-none absolute bottom-[10%] -translate-y-1/2 left-0 hidden select-none lg:block"
-        aria-hidden="true"
-      >
-        <Image
-          src={BIRD_ASSET}
-          alt=""
-          width={200}
-          height={200}
-          className="object-contain"
-          onError={() => {}}
-        />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-[1300px] px-6 lg:px-0">
         {/* Header */}
         <div className="mb-10 flex flex-col items-center gap-6 text-center lg:mb-[72px] lg:gap-8">
@@ -79,6 +62,7 @@ export function StepsSection({ data }: StepsSectionProps) {
               step={step}
               index={i}
               isLast={i === steps.length - 1}
+              isFirst={i === 0}
             />
           ))}
         </div>
