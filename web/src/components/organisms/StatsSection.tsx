@@ -41,13 +41,19 @@ export function StatsSection({ data }: StatsSectionProps) {
             <Image src="/images/features-section/sparkle.svg" alt="" width={43} height={45} />
           </div>
 
-          {/* Bird mascot — bottom-right */}
-          {/* <div
-            className="pointer-events-none absolute bottom-0 right-0 hidden select-none lg:block"
+          {/* Bird mascot — bottom-right, behind stats content */}
+          <div
+            className="pointer-events-none absolute bottom-0 right-0 z-0 select-none"
             aria-hidden="true"
           >
-            <Image src="/images/steps-section/bird.png" alt="" width={220} height={220} className="object-contain" />
-          </div> */}
+            <Image
+              src="/images/steps-section/StatBannerBird.svg"
+              alt=""
+              width={220}
+              height={220}
+              className="h-auto w-[100px] object-contain sm:w-[130px] lg:w-[180px] xl:w-[220px] 2xl:w-[260px]"
+            />
+          </div>
         </>
       )}
 
