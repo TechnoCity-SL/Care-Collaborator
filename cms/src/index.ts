@@ -1,4 +1,5 @@
 import type { Core } from '@strapi/strapi';
+import { configureContentManagerView } from './config/content-manager-view';
 
 const globalSeed = {
   nav_links: [
@@ -583,6 +584,7 @@ export default {
     await seedArticles(strapi);
     await seedRoiCalculatorPage(strapi);
     await seedPrivacyPage(strapi);
+    await configureContentManagerView(strapi);
   },
 };
 
