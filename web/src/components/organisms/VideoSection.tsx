@@ -32,7 +32,7 @@ export function VideoSection({ data }: VideoSectionProps) {
           src={videoFile.url}
           autoPlay
           controls
-          className="absolute inset-0 h-full w-full"
+          className="absolute inset-0 h-full w-full object-cover"
         />
       );
     }
