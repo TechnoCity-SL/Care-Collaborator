@@ -32,9 +32,9 @@ export function Footer({ globalData }: FooterProps) {
               <Image
                 src={footer_logo.url}
                 alt={footer_logo.alternativeText ?? 'Care Collaborator'}
-                width={footer_logo.width ?? 160}
-                height={footer_logo.height ?? 40}
-                className="h-8 w-auto"
+                width={footer_logo.width ?? 360}
+                height={footer_logo.height ?? 86}
+                className="h-auto max-h-[86px] w-auto max-w-[360px]"
               />
             ) : (
               <span className="font-sans text-[22px] font-bold tracking-tight text-white">
