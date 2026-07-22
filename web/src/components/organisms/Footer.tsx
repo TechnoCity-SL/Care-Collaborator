@@ -14,6 +14,9 @@ export function Footer({ globalData }: FooterProps) {
     footer_address,
   } = globalData;
 
+  const columnsJustifyClass =
+    footer_columns.length > 2 ? 'lg:justify-between' : 'lg:justify-end lg:gap-16';
+
   return (
     <footer className="bg-footer-bg pb-8 pt-16 lg:pt-[72px]">
       <div className="mx-auto max-w-[1780px] px-6 lg:px-[70px]">
@@ -56,7 +59,9 @@ export function Footer({ globalData }: FooterProps) {
           </div>
 
           {/* Link columns — 2-col grid on mobile/tablet, flex row on lg */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:gap-x-12 lg:flex lg:flex-1 lg:justify-between">
+          <div
+            className={`grid grid-cols-2 gap-x-8 gap-y-10 sm:gap-x-12 lg:flex lg:flex-1 ${columnsJustifyClass}`}
+          >
             {footer_columns.map((col) => (
               <div key={col.id} className="flex flex-col gap-5">
                 <p className="font-body text-[14px] font-semibold uppercase tracking-wide text-footer-header lg:text-[18px] lg:font-normal">
