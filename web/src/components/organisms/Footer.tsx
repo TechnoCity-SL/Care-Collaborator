@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { GlobalDTO } from '@/types/pages';
 
@@ -7,6 +8,7 @@ interface FooterProps {
 
 export function Footer({ globalData }: FooterProps) {
   const {
+    footer_logo,
     footer_tagline,
     footer_columns,
     footer_email,
@@ -26,10 +28,20 @@ export function Footer({ globalData }: FooterProps) {
 
           {/* Brand column */}
           <div className="flex max-w-full flex-col gap-6 lg:max-w-[520px]">
-            <span className="font-sans text-[22px] font-bold tracking-tight text-white">
-              Care{' '}
-              <span className="bg-btn-blue bg-clip-text text-transparent">Collaborator</span>
-            </span>
+            {footer_logo?.url ? (
+              <Image
+                src={footer_logo.url}
+                alt={footer_logo.alternativeText ?? 'Care Collaborator'}
+                width={footer_logo.width ?? 160}
+                height={footer_logo.height ?? 40}
+                className="h-8 w-auto"
+              />
+            ) : (
+              <span className="font-sans text-[22px] font-bold tracking-tight text-white">
+                Care{' '}
+                <span className="bg-btn-blue bg-clip-text text-transparent">Collaborator</span>
+              </span>
+            )}
             {footer_tagline && (
               <p className="font-body text-[16px] leading-normal text-footer-text lg:text-[18px]">
                 {footer_tagline}

@@ -6,6 +6,10 @@ export async function fetchGlobal(): Promise<GlobalDTO> {
     '/global' +
       '?populate[nav_links]=*' +
       '&populate[nav_cta]=*' +
+      '&populate[footer_logo][fields][0]=url' +
+      '&populate[footer_logo][fields][1]=alternativeText' +
+      '&populate[footer_logo][fields][2]=width' +
+      '&populate[footer_logo][fields][3]=height' +
       '&populate[footer_columns][populate][links][fields][0]=label' +
       '&populate[footer_columns][populate][links][fields][1]=url' +
       '&populate[footer_columns][populate][links][fields][2]=is_external'

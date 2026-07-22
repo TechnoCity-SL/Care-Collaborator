@@ -256,8 +256,13 @@ const componentFieldMeta: Record<string, FieldMetaMap> = {
     },
     quote: {
       label: 'Quote',
-      description: 'The mission statement, shown as a large pull-quote. The phrase "the person in the room" is automatically highlighted in green if present.',
+      description: 'The mission statement, shown as a large pull-quote.',
       placeholder: 'Enter the mission quote...',
+    },
+    quote_highlight: {
+      label: 'Highlighted Words',
+      description: 'A word or phrase from the Quote to highlight in green. Must match text in the Quote exactly.',
+      placeholder: 'e.g. the person in the room',
     },
     body: {
       label: 'Body Text',
@@ -577,6 +582,10 @@ const contentTypeFieldMeta: Record<string, FieldMetaMap> = {
     nav_cta: {
       label: 'Navigation Button',
       description: 'Call-to-action button shown at the right of the header (e.g. Book Demo).',
+    },
+    footer_logo: {
+      label: 'Footer Logo',
+      description: 'Logo image shown in the footer. Leave empty to fall back to the "Care Collaborator" text mark.',
     },
     footer_tagline: {
       label: 'Footer Tagline',

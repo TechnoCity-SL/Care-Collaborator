@@ -548,6 +548,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     footer_address: Schema.Attribute.String;
     footer_columns: Schema.Attribute.Component<'shared.footer-column', true>;
     footer_email: Schema.Attribute.Email;
+    footer_logo: Schema.Attribute.Media<'images'>;
     footer_phone: Schema.Attribute.String;
     footer_tagline: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

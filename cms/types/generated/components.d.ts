@@ -190,6 +190,7 @@ export interface SharedMissionSection extends Struct.ComponentSchema {
     clouds: Schema.Attribute.Component<'shared.parallax-cloud', true>;
     label: Schema.Attribute.String;
     quote: Schema.Attribute.Text & Schema.Attribute.Required;
+    quote_highlight: Schema.Attribute.String;
     values: Schema.Attribute.Component<'shared.feature-item', true>;
   };
 }

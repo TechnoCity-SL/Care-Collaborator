@@ -79,6 +79,7 @@ export interface FooterColumnDTO {
 export interface GlobalDTO {
   nav_links: LinkDTO[];
   nav_cta: CtaButtonDTO;
+  footer_logo?: CloudinaryMediaDTO;
   footer_tagline: string;
   footer_columns: FooterColumnDTO[];
   footer_email: string;
@@ -202,6 +203,7 @@ export interface OriginSectionDTO {
 export interface MissionSectionDTO {
   label?: string;
   quote: string;
+  quote_highlight?: string;
   body?: string;
   values: FeatureItemDTO[];
   bg_image?: CloudinaryMediaDTO;

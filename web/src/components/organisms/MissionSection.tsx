@@ -4,8 +4,6 @@ import { FeatureCard } from '@/components/molecules/FeatureCard';
 import { ParallaxCloud } from '@/components/molecules/ParallaxCloud';
 import type { MissionSectionDTO } from '@/types/pages';
 
-const QUOTE_HIGHLIGHT = 'the person in the room';
-
 interface MissionSectionProps {
   data: MissionSectionDTO;
 }
@@ -14,6 +12,7 @@ export function MissionSection({ data }: MissionSectionProps) {
   const {
     label: mission_label,
     quote: mission_quote,
+    quote_highlight: mission_quote_highlight,
     body: mission_body,
     values: mission_values,
     bg_image: mission_bg_image,
@@ -24,13 +23,18 @@ export function MissionSection({ data }: MissionSectionProps) {
   const isLight = !hasBgImage;
   const sectionRef = useRef<HTMLElement>(null);
 
+  const resolvedHighlight =
+    mission_quote_highlight && mission_quote.includes(mission_quote_highlight)
+      ? mission_quote_highlight
+      : null;
+
   const renderQuote = () => {
-    if (!mission_quote.includes(QUOTE_HIGHLIGHT)) return mission_quote;
-    const [before, after] = mission_quote.split(QUOTE_HIGHLIGHT);
+    if (!resolvedHighlight) return mission_quote;
+    const [before, after] = mission_quote.split(resolvedHighlight);
     return (
       <>
         {before}
-        <span className="text-green">{QUOTE_HIGHLIGHT}</span>
+        <span className="text-green">{resolvedHighlight}</span>
         {after}
       </>
     );
