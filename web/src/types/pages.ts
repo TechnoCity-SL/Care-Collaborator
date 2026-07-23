@@ -79,6 +79,7 @@ export interface FooterColumnDTO {
 export interface GlobalDTO {
   nav_links: LinkDTO[];
   nav_cta: CtaButtonDTO;
+  header_logo?: CloudinaryMediaDTO;
   footer_logo?: CloudinaryMediaDTO;
   footer_tagline: string;
   footer_columns: FooterColumnDTO[];

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/atoms/Button';
@@ -9,7 +10,7 @@ interface HeaderProps {
 }
 
 export function Header({ globalData }: HeaderProps) {
-  const { nav_links, nav_cta } = globalData;
+  const { nav_links, nav_cta, header_logo } = globalData;
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const router = useRouter();
@@ -46,10 +47,21 @@ export function Header({ globalData }: HeaderProps) {
           className="flex items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2"
           aria-label="Care Collaborator home"
         >
-          <span className="font-sans text-[22px] font-bold tracking-tight text-text-nav">
-            Care{' '}
-            <span className="bg-btn-blue bg-clip-text text-transparent">Collaborator</span>
-          </span>
+          {header_logo?.url ? (
+            <Image
+              src={header_logo.url}
+              alt={header_logo.alternativeText ?? 'Care Collaborator'}
+              width={header_logo.width ?? 176}
+              height={header_logo.height ?? 40}
+              className="h-10 w-auto max-w-44"
+              priority
+            />
+          ) : (
+            <span className="font-sans text-[22px] font-bold tracking-tight text-text-nav">
+              Care{' '}
+              <span className="bg-btn-blue bg-clip-text text-transparent">Collaborator</span>
+            </span>
+          )}
         </Link>
 
         {/* Desktop nav links */}

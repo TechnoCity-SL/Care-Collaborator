@@ -583,6 +583,10 @@ const contentTypeFieldMeta: Record<string, FieldMetaMap> = {
       label: 'Navigation Button',
       description: 'Call-to-action button shown at the right of the header (e.g. Book Demo).',
     },
+    header_logo: {
+      label: 'Header Logo',
+      description: 'Logo image shown in the top navigation bar (176×40px). Leave empty to fall back to the "Care Collaborator" text mark.',
+    },
     footer_logo: {
       label: 'Footer Logo',
       description: 'Logo image shown in the footer. Leave empty to fall back to the "Care Collaborator" text mark.',

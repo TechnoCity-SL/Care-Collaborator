@@ -22,6 +22,12 @@
       "repeatable": false,
       "component": "shared.cta-button"
     },
+    "header_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
     "footer_logo": {
       "type": "media",
       "multiple": false,

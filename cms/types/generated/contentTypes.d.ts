@@ -551,6 +551,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     footer_logo: Schema.Attribute.Media<'images'>;
     footer_phone: Schema.Attribute.String;
     footer_tagline: Schema.Attribute.Text;
+    header_logo: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
