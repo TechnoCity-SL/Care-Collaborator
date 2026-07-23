@@ -3,6 +3,12 @@ import type { StepItemDTO } from '@/types/pages';
 
 const BIRD_ASSET = '/images/steps-section/StepSectionBird.svg';
 
+const ARROW_ASSETS = [
+  { src: '/images/steps-section/Arrow1.svg', width: 158, height: 13 },
+  { src: '/images/steps-section/Arrow2.svg', width: 158, height: 15 },
+  { src: '/images/steps-section/Arrow3.svg', width: 158, height: 13 },
+];
+
 interface StepCardProps {
   step: StepItemDTO;
   index: number;
@@ -36,21 +42,13 @@ export function StepCard({ step, index, isLast = false, isFirst = false }: StepC
         </span>
         {!isLast && (
           <div className="hidden flex-1 items-center lg:flex" aria-hidden="true">
-            <svg
-              viewBox="0 0 112 24"
-              preserveAspectRatio="none"
-              className="h-6 w-full"
-              fill="none"
-            >
-              <path
-                d="M4 13C24 21 40 21 58 14C74 8 82 4 94 4"
-                stroke="#0074ff55"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeDasharray="1 9"
-              />
-              <path d="M92 0L108 4.5L92 9V0Z" fill="#0074ff" />
-            </svg>
+            <Image
+              src={ARROW_ASSETS[index % ARROW_ASSETS.length].src}
+              alt=""
+              width={ARROW_ASSETS[index % ARROW_ASSETS.length].width}
+              height={ARROW_ASSETS[index % ARROW_ASSETS.length].height}
+              className="h-auto w-full"
+            />
           </div>
         )}
       </div>
